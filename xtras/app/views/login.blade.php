@@ -15,8 +15,13 @@
 <body>
 
                   <div class="container">
-                                     <form class="form-signin" role="form">
+
+                                     <form class="form-signin" role="form" method="POST" action="{{ URL::to('login') }}">
+
                                        <h2 class="form-signin-heading">Please sign in</h2>
+                                         <p>{{ $errors->first('email') }}
+                                            {{ $errors->first('password') }}
+                                          </p>
                                      <!--
                                       <input type="email" class="form-control" placeholder="Email address" required autofocus>
                                        <input type="password" class="form-control" placeholder="Password" required>
@@ -34,10 +39,15 @@
                                          </label>
                                        </div>
 
+<!--
                                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                                       </form>
+-->
+                                      {{ Form::submit('Sign in', array('class' => 'btn btn-lg btn-primary btn-block')) }}
 
-                                        </div>
+
+
+                          </form>
+                          </div>
 
 </body>
 </html>
