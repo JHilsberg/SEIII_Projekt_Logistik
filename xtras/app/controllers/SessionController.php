@@ -41,16 +41,16 @@ class SessionController extends BaseController{
             // attempt to do the login
             if (Auth::attempt($userdata)) {
 
-
-                return Redirect::to('secure');
+                return View::make('secure');
+                //return Redirect::to('secure');
 
                 echo 'SUCCESS!';
 
             } else {
-
                 // validation not successful, send back to form
-                return Redirect::to('login');
-
+                return Redirect::to('login')
+                    ->with('wrongPassword', 'wrong password')
+                    ->withInput(Input::except('password'));
             }
 
         }

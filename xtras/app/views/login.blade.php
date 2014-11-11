@@ -20,8 +20,13 @@
 
                                        <h2 class="form-signin-heading">Please sign in</h2>
                                          <p>{{ $errors->first('email') }}
-                                            {{ $errors->first('password') }}
+                                            {{ $errors->first('password')}}
                                           </p>
+                                          @if(Session::has('wrongPassword'))
+                                          <div class="alert-box success">
+                                            {{ Session::get('wrongPassword') }}
+                                          </div>
+                                          @endif
                                      <!--
                                       <input type="email" class="form-control" placeholder="Email address" required autofocus>
                                        <input type="password" class="form-control" placeholder="Password" required>
