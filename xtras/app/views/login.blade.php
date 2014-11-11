@@ -23,7 +23,7 @@
                                             {{ $errors->first('password')}}
                                           </p>
                                           @if(Session::has('wrongPassword'))
-                                          <div class="alert-box success">
+                                          <div class="alert alert-warning">
                                             {{ Session::get('wrongPassword') }}
                                           </div>
                                           @endif
