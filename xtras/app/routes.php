@@ -21,11 +21,17 @@ Route::get('home', function()
 {
     return View::make('home');
 });
-
+/**
 Route::get('login', function()
 {
     return View::make('login');
 });
+**/
+
+// route to show the login form
+Route::get('login', array('uses' => 'SessionController@showLogin'));
 
 // route to process the form
-Route::post('login', array('uses' => 'HomeController@doLogin'));
+Route::post('login', array('uses' => 'SessionController@doLogin'));
+
+Route::get('logout', array('uses' => 'SessionController@doLogout'));
