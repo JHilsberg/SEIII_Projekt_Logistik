@@ -31,7 +31,7 @@
 
         </button>
 
-        <a href="#" class="navbar-brand">Text</a>
+        <a href="#" class="navbar-brand">Your Brand</a>
 
     </div>
 
