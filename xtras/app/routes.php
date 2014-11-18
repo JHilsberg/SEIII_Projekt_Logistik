@@ -17,16 +17,14 @@ Route::get('/', function()
 });
 
 
-Route::get('home', function()
+Route::get('secure', function()
 {
-    return View::make('home');
+    if (Auth::check()) {
+        return View::make('secure');
+    }else{
+        echo 'You are not authorized to view this content!';
+    }
 });
-/**
-Route::get('login', function()
-{
-    return View::make('login');
-});
-**/
 
 // route to show the login form
 Route::get('login', array('uses' => 'SessionController@showLogin'));
