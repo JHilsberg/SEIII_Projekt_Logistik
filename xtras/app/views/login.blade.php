@@ -13,7 +13,7 @@
                 {{ HTML::script('js/login.js') }}
 <title>Xtras - Login</title>
 </head>
-<body>
+<body onload="@if(Session::has('logout')) openLogoutDialog() @endif">
                   <div class="container">
                        <form class="form-signin" role="form" method="POST" action="{{ URL::to('login') }}">
 
