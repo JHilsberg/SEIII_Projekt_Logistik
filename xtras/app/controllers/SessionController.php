@@ -47,7 +47,7 @@ class SessionController extends BaseController{
             } else {
                 // validation not successful, send back to form
                 return Redirect::to('login')
-                    ->with('wrongPassword', 'wrong password')
+                    ->with('wrongPassword', 'Password and username does not match.' )
                     ->withInput(Input::except('password'));
             }
 

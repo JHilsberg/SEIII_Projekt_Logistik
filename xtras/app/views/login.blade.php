@@ -17,22 +17,31 @@
                   <div class="container">
                        <form class="form-signin" role="form" method="POST" action="{{ URL::to('login') }}">
 
-                         <h2 class="form-signin-heading">Please sign in</h2>
-                         <p>
-                            {{ $errors->first('email') }}
-                            {{ $errors->first('password')}}</p>
-                         <p>
-                            {{ Form::text('email', Input::old('email'), array('placeholder' => 'Email Adress')) }}
+                         <h2 class="form-signin-heading" style="text-align: center">Please sign in</h2>
+                         <p style="text-align: center">
+                            {{ Form::text('email', Input::old('email'), array('placeholder' => 'e-mail address')) }}
                          </p>
-                         <p>
-                            {{ Form::password('password', array('placeholder' => 'Password')) }}
+                         <div style="height: 30dpi">
+                            @if($errors->first('email'))
+                                <div class="alert alert-info">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
+                         </div>
+                         <p style="text-align: center">
+                            {{ Form::password('password', array('placeholder' => 'password')) }}
                          </p>
                          @if(Session::has('wrongPassword'))
                             <div class="alert alert-info">
                                 {{ Session::get('wrongPassword') }}
                             </div>
                          @endif
-                         <div class="checkbox">
+                         @if($errors->first('password'))
+                            <div class="alert alert-info">
+                                {{ $errors->first('password')}}
+                            </div>
+                         @endif
+                         <div class="checkbox" style="text-align: center">
                             <label>
                                 <input type="checkbox" value="remember-me"> Remember me
                             </label>
