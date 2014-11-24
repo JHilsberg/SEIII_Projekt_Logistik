@@ -57,7 +57,8 @@ class SessionController extends BaseController{
     public function doLogout()
     {
         Auth::logout();
-        return View::make('logout');
+        return Redirect::to('login')
+            ->with('logout', 'logout');
     }
 
 } 

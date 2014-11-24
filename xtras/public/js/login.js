@@ -2,25 +2,19 @@
  * Created by robert on 04.11.14.
  */
 
-function openLoginDialog(){
+function openLogoutDialog(){
     bootbox.dialog({
-        message: "<p><?php echo echo Form::text('username'); ?></p>",
-        title: "Login",
+        message: "Sie haben sich erfolgreich abgemeldet!",
+        title: "Logout",
         buttons: {
             success: {
-                label: "Login",
+                label: "OK",
                 className: "btn-success",
-                callback: function() {
-
-                }
-            },
-            main: {
-                label: "Cancel",
-                className: "btn-primary",
                 callback: function() {
 
                 }
             }
         }
     });
+
 }
