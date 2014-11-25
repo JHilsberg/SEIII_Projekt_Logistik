@@ -13,7 +13,8 @@
                 {{ HTML::script('js/login.js') }}
 <title>Xtras - Login</title>
 </head>
-<body onload="@if(Session::has('logout')) openLogoutDialog() @endif">
+<body onload="@if(App::getLocale() == 'de' && Session::has('logout'))openLogoutDialogDE()
+                @elseif(App::getLocale() == 'en' && Session::has('logout'))openLogoutDialogEN()@endif">
                   <div class="btn-group pull-right btn-margin-top btn-margin-right btn-group-sm" role="group">
                     <button type="button" class="btn btn-default" >DE</button>
                     <button type="button" class="btn btn-default" >EN</button>

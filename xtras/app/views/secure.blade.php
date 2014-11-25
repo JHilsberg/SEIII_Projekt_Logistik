@@ -5,7 +5,7 @@
     <!-- CSS are placed here -->
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/bootstrap-theme.css') }}
-    {{ HTML::style('css/signin.css') }}
+    {{ HTML::style('css/formular.css') }}
      {{ HTML::style('css/datepicker.css') }}
       {{ HTML::style('css/datepicker3.css') }}
     <!-- Scripts are placed here -->
@@ -81,33 +81,56 @@ $(document).ready(function() {
 
 </nav>
 
-
-<h1>Formular</h1>
+<form class="form-transport" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
+<!--<h1 class="form-heading" style="text-align: center">Formular</h1>
+-->
 <h2>Verladeort</h2>
-{{Form::select('land', array('DE' => 'Deutschland', 'PL' => 'Polen'), 'P');}}
-<h2>Abhol- und Lieferzeiten</h2>
-{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control datepicker','placeholder' => 'Abholtermin', 'id' => 'calendar')) }}
-{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker','placeholder' => 'minimale Lieferzeit', 'id' => 'calendar2')) }}
-{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker','placeholder' => 'maximale Lieferzeit', 'id' => 'calendar3')) }}
+
+<div class="col-md-4">
+<h2 class="">Abhol- und Lieferzeiten</h2>
+<p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'Abholtermin', 'id' => 'calendar')) }}
+</p>
+<p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'minimale Lieferzeit', 'id' => 'calendar2')) }}
+</p>
+<p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'maximale Lieferzeit', 'id' => 'calendar3')) }}
+</p>
+
 <h2>Verkehrsmittel</h2>
-<p>{{ Form::checkbox('schiff', 'value');}} Schiff</p>
-<p>{{ Form::checkbox('lkw', 'value');}} LKW</p>
-<p>{{ Form::checkbox('zug', 'value');}} Zug</p>
-<p>{{ Form::checkbox('pkw', 'value');}} PKW</p>
-<p>{{ Form::checkbox('flugzeug', 'value');}} Flugzeug</p>
-<p>{{ Form::checkbox('egal', 'value');}} Egal</p>
+<p class="form-paragraph">{{ Form::checkbox('schiff', 'value');}} Schiff</p>
+<p class="form-paragraph">{{ Form::checkbox('lkw', 'value');}} LKW</p>
+<p class="form-paragraph">{{ Form::checkbox('zug', 'value');}} Zug</p>
+<p class="form-paragraph">{{ Form::checkbox('pkw', 'value');}} PKW</p>
+<p class="form-paragraph">{{ Form::checkbox('flugzeug', 'value');}} Flugzeug</p>
+<p class="form-paragraph">{{ Form::checkbox('egal', 'value');}} Egal</p>
+</div>
+
+
+<div class="col-md-4">
+<h2>Wareninformationen</h2>
+<p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} Gefahrgut</p>
+<p class="form-paragraph">{{Form::textarea('beschreibung', 'Warenbeschreibung',array('type' => 'text', 'class' => 'form-textarea'));}}</p>
+<p class="form-paragraph"> Gewicht: {{Form::number('gewicht', 'value');}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
+<p class="form-paragraph">{{ Form::text('verpackung', 'Warenverpackung');}}</p>
+</div>
+
+<div class="col-md-4">
 <h2>Transportbehälter</h2>
-{{Form::select('behaelter', array('C' => 'Container', 'P' => 'Palette', 'B' => 'Boxen'), 'C');}}
+<p class="form-paragraph">{{Form::select('behaelter', array('C' => 'Container', 'P' => 'Palette', 'B' => 'Boxen'), 'C');}}</p>
 <br />
 Anzahl Transportbehälter
 <br />
-{{Form::number('anzahlBehaelter', 'value');}}
-<h2>Wareninformationen</h2>
-<p>{{ Form::checkbox('gefahrgut', 'value');}} Gefahrgut</p>
-{{Form::textarea('beschreibung', 'Warenbeschreibung');}}
-<p> Gewicht: {{Form::number('gewicht', 'value');}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
-{{ Form::text('verpackung', 'Warenverpackung');}}
+<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value');}}</p>
+</div>
+
+
+<div class="col-md-4">
 <h2>Sonstiges</h2>
-{{Form::textarea('bemerkung', 'Bemerkungen');}}
+<p class="form-paragraph">{{Form::textarea('bemerkung', 'Bemerkungen',array('type' => 'text', 'class' => 'form-textarea'))}}</p>
+
+</div>
+<div class="col-md-4">
+{{ Form::submit('Abschicken', array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
+</div>
+</form>
 </body>
 </html>
