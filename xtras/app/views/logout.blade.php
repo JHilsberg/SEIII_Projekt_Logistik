@@ -14,8 +14,6 @@
 <title>Xtras - Logout</title>
 </head>
 <body>
-<p style="position: relative"><strong>Sie haben sich erfolgreich abgemeldet!</strong></p>
-<p><a href="login">Zurück zum Login</a></p>
 <button onclick="openLogoutDialog()">Test</button>
 </body>
 
