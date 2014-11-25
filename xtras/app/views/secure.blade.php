@@ -123,7 +123,7 @@ $(document).ready(function() {
 <div class="col-md-4">
 <h2>{{Lang::get('formular.other')}}</h2>
 <label class="sr-only" for="bemerkung">Email address</label>
-<p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.other')))}}</p>
+<p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.comment')))}}</p>
 
 </div>
 <div class="col-md-4">

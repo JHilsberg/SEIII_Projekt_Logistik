@@ -24,7 +24,7 @@ return array(
     'prod_info'          => 'Goods information',
     'dangerous'          => 'Dangerous goods',
     'description_goods'  => 'Goods description',
-    'weight'             => 'Weight:',
+    'weight'             => 'Weight',
     'kilogram'           => 'Kilogram',
     'ton'                => 'Tons',
     'packaging'          => 'Packaging',

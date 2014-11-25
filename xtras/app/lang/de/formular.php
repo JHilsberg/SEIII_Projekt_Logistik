@@ -24,7 +24,7 @@ return array(
     'prod_info'          => 'Wareninformationen',
     'dangerous'          => 'Gefahrengut',
     'description_goods'  => 'Warenbeschreibung',
-    'weight'             => 'Gewicht:',
+    'weight'             => 'Gewicht',
     'kilogram'           => 'Kilogramm',
     'ton'                => 'Tonnen',
     'packaging'          => 'Warenverpackung',
