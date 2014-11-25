@@ -84,50 +84,50 @@ $(document).ready(function() {
 <form class="form-transport" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
 <!--<h1 class="form-heading" style="text-align: center">Formular</h1>
 -->
-<h2>Verladeort</h2>
+<h2>{{Lang::get('formular.loading_place')}}</h2>
 
 <div class="col-md-4">
-<h2 class="">Abhol- und Lieferzeiten</h2>
-<p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'Abholtermin', 'id' => 'calendar')) }}
+<h2 class="">{{Lang::get('formular.pickup_delivery')}}</h2>
+<p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => Lang::get('formular.pickup'), 'id' => 'calendar')) }}
 </p>
-<p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'minimale Lieferzeit', 'id' => 'calendar2')) }}
+<p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => Lang::get('formular.min_delivery'), 'id' => 'calendar2')) }}
 </p>
-<p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'maximale Lieferzeit', 'id' => 'calendar3')) }}
+<p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
 </p>
 
-<h2>Verkehrsmittel</h2>
-<p class="form-paragraph">{{ Form::checkbox('schiff', 'value');}} Schiff</p>
-<p class="form-paragraph">{{ Form::checkbox('lkw', 'value');}} LKW</p>
-<p class="form-paragraph">{{ Form::checkbox('zug', 'value');}} Zug</p>
-<p class="form-paragraph">{{ Form::checkbox('pkw', 'value');}} PKW</p>
-<p class="form-paragraph">{{ Form::checkbox('flugzeug', 'value');}} Flugzeug</p>
-<p class="form-paragraph">{{ Form::checkbox('egal', 'value');}} Egal</p>
+<h2>{{Lang::get('formular.means_transport')}}</h2>
+<p class="form-paragraph">{{ Form::checkbox('schiff', 'value');}} {{Lang::get('formular.ship')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('lkw', 'value');}} {{Lang::get('formular.lorry')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('zug', 'value');}} {{Lang::get('formular.train')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('pkw', 'value');}} {{Lang::get('formular.car')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('flugzeug', 'value');}} {{Lang::get('formular.airplane')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('egal', 'value');}} {{Lang::get('formular.similar')}}</p>
 </div>
 
 
 <div class="col-md-4">
-<h2>Wareninformationen</h2>
-<p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} Gefahrgut</p>
-<p class="form-paragraph">{{Form::textarea('beschreibung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => 'Warenbeschreibung'));}}</p>
-<p class="form-paragraph">{{Form::number('gewicht', 'value',array('placeholder'=>'Gewicht'));}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
-<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => 'Warenverpackung'));}}</p>
+<h2>{{Lang::get('formular.prod_info')}}</h2>
+<p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} {{Lang::get('formular.dangerous')}}</p>
+<p class="form-paragraph">{{Form::textarea('beschreibung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.description_goods')));}}</p>
+<p class="form-paragraph">{{Form::number('gewicht', 'value',array('placeholder'=>Lang::get('formular.weight')));}}{{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T');}}</p>
+<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging')));}}</p>
 </div>
 
 <div class="col-md-4">
-<h2>Transportbehälter</h2>
-<p class="form-paragraph">{{Form::select('behaelter', array('C' => 'Container', 'P' => 'Palette', 'B' => 'Boxen'), 'C');}}</p>
-<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>'Anzahl'));}}</p>
+<h2>{{Lang::get('formular.casket')}}</h2>
+<p class="form-paragraph">{{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C');}}</p>
+<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>Lang::get('formular.quantity')));}}</p>
 </div>
 
 
 <div class="col-md-4">
-<h2>Sonstiges</h2>
+<h2>{{Lang::get('formular.other')}}</h2>
 <label class="sr-only" for="bemerkung">Email address</label>
-<p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => 'Bemerkungen'))}}</p>
+<p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.other')))}}</p>
 
 </div>
 <div class="col-md-4">
-{{ Form::submit('Abschicken', array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
+{{ Form::submit(Lang::get('formular.submit'), array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
 </div>
 </form>
 </body>

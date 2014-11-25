@@ -1,5 +1,6 @@
 <?php
 
 return array(
-    'heading' => 'Bitte anmelden'
+    'heading' => 'Bitte anmelden',
+    'window' => 'XTRAS - Anmeldung'
 );
