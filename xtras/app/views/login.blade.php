@@ -17,7 +17,7 @@
                   <div class="container">
                        <form class="form-signin" role="form" method="POST" action="{{ URL::to('login') }}">
 
-                         <h2 class="form-signin-heading" style="text-align: center">Please sign in</h2>
+                         <h2 class="form-signin-heading" style="text-align: center">{{ Lang::get(login.heading) }}</h2>
                          <p style="text-align: center">
                             {{ Form::text('email', Input::old('email'), array('placeholder' => 'e-mail address')) }}
                          </p>
