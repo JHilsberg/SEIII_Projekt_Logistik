@@ -82,10 +82,12 @@ $(document).ready(function() {
 </nav>
 
 <form class="form-transport" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
-<h1 class="form-heading" style="text-align: center">Formular</h1>
+<!--<h1 class="form-heading" style="text-align: center">Formular</h1>
+-->
 <h2>Verladeort</h2>
-{{Form::select('land', array('DE' => 'Deutschland', 'PL' => 'Polen'), 'P');}}
-<h2>Abhol- und Lieferzeiten</h2>
+
+<div class="col-md-4">
+<h2 class="">Abhol- und Lieferzeiten</h2>
 <p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'Abholtermin', 'id' => 'calendar')) }}
 </p>
 <p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => 'minimale Lieferzeit', 'id' => 'calendar2')) }}
@@ -100,19 +102,35 @@ $(document).ready(function() {
 <p class="form-paragraph">{{ Form::checkbox('pkw', 'value');}} PKW</p>
 <p class="form-paragraph">{{ Form::checkbox('flugzeug', 'value');}} Flugzeug</p>
 <p class="form-paragraph">{{ Form::checkbox('egal', 'value');}} Egal</p>
+</div>
+
+
+<div class="col-md-4">
+<h2>Wareninformationen</h2>
+<p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} Gefahrgut</p>
+<p class="form-paragraph">{{Form::textarea('beschreibung', 'Warenbeschreibung',array('type' => 'text', 'class' => 'form-textarea'));}}</p>
+<p class="form-paragraph"> Gewicht: {{Form::number('gewicht', 'value');}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
+<p class="form-paragraph">{{ Form::text('verpackung', 'Warenverpackung');}}</p>
+</div>
+
+<div class="col-md-4">
 <h2>Transportbehälter</h2>
 <p class="form-paragraph">{{Form::select('behaelter', array('C' => 'Container', 'P' => 'Palette', 'B' => 'Boxen'), 'C');}}</p>
 <br />
 Anzahl Transportbehälter
 <br />
 <p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value');}}</p>
-<h2>Wareninformationen</h2>
-<p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} Gefahrgut</p>
-<p class="form-paragraph">{{Form::textarea('beschreibung', 'Warenbeschreibung',array('type' => 'text', 'class' => 'form-textarea'));}}</p>
-<p class="form-paragraph"> Gewicht: {{Form::number('gewicht', 'value');}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
-<p class="form-paragraph">{{ Form::text('verpackung', 'Warenverpackung');}}</p>
+</div>
+
+
+<div class="col-md-4">
 <h2>Sonstiges</h2>
 <p class="form-paragraph">{{Form::textarea('bemerkung', 'Bemerkungen',array('type' => 'text', 'class' => 'form-textarea'))}}</p>
- {{ Form::submit('Abschicken', array('class' => 'btn btn-lg btn-primary btn-block form-button')) }}
+
+</div>
+<div class="col-md-4">
+{{ Form::submit('Abschicken', array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
+</div>
+</form>
 </body>
 </html>
