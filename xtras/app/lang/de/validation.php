@@ -85,10 +85,58 @@ return array(
 	*/
 
 	'custom' => array(
-		'attribute-name' => array(
-			'rule-name' => 'custom-message',
+		'land' => array(
+			'required' => 'Bitte wählen Sie einen Verladeort aus.',
 		),
-	),
+        'abholtermin' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
+            !'before:'.$currentDate::format(mm/dd/yyyy) => 'Abholtermin muss in der Zukunft liegen.',
+        ),
+        'minLiefertermin' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
+             !'before:'.$abholtermin => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
+         ),
+        'maxLiefertermin' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
+            !'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
+        ),
+        'Verkehrsmittel' => array(
+            $_GET["schiff"] || $_GET["lkw"] || $_GET["zug"] || $_GET["pkw"] || $_GET["flugzeug"] || $_GET["egal"] == 1
+            => 'Es muss mindestens ein Feld ausgewählt sein.',
+        ),
+        'behaelter' => array(
+            $_GET["behaelter"] == 'Container' || $_GET["behaelter"] == 'Palette' || $_GET["behaelter"] == 'Boxen'
+            => 'Sie haben einen falschen Behälter ausgewählt.',
+        ),
+        'anzahlBehaelter' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'is_natural_no_zero' => 'Anzahl der Transportbehälter ist ungültig.',
+        ),
+        'beschreibung' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'max_length[10000]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
+        'gewicht' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'is_natural_no_zero' => 'Gewicht ist ungültig.',
+        ),
+        'einheit' => array(
+            $_GET["einheit"] == 'Kilogramm' || $_GET["einheit"] == 'Tonnen'
+            => 'Sie haben eine falsche Einheit ausgewählt.',
+        ),
+        'verpackung' => array(
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'max_length[100]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
+        'bemerkung' => array(
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'max_length[1000]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
+    ),
 
 	/*
 	|--------------------------------------------------------------------------
