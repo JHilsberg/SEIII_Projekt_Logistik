@@ -29,6 +29,9 @@ Route::get('secure', function()
     }
 });
 
+Route::post('transportauftrag', array('uses' => 'FormController@validate'));
+
+
 // route to show the login form
 Route::get('login', array('uses' => 'SessionController@showLogin'));
 
