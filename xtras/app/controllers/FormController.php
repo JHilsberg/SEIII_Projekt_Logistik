@@ -9,7 +9,7 @@ class FormController  extends BaseController
 {
     public function validate()
     {
-        $currentDate= new DateTime(null, new DateTimeZone('MEZ'));
+        $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
         $abholtermin= $_GET["abholtermin"];
         $minLiefertermin= $_GET["minLiefertermin"];
 
