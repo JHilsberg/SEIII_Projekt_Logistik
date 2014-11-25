@@ -108,24 +108,22 @@ $(document).ready(function() {
 <div class="col-md-4">
 <h2>Wareninformationen</h2>
 <p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} Gefahrgut</p>
-<p class="form-paragraph">{{Form::textarea('beschreibung', 'Warenbeschreibung',array('type' => 'text', 'class' => 'form-textarea'));}}</p>
-<p class="form-paragraph"> Gewicht: {{Form::number('gewicht', 'value');}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
-<p class="form-paragraph">{{ Form::text('verpackung', 'Warenverpackung');}}</p>
+<p class="form-paragraph">{{Form::textarea('beschreibung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => 'Warenbeschreibung'));}}</p>
+<p class="form-paragraph">{{Form::number('gewicht', 'value',array('placeholder'=>'Gewicht'));}}{{Form::select('einheit', array('KG' => 'Kilogramm', 'T' => 'Tonnen'), 'T');}}</p>
+<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => 'Warenverpackung'));}}</p>
 </div>
 
 <div class="col-md-4">
 <h2>Transportbehälter</h2>
 <p class="form-paragraph">{{Form::select('behaelter', array('C' => 'Container', 'P' => 'Palette', 'B' => 'Boxen'), 'C');}}</p>
-<br />
-Anzahl Transportbehälter
-<br />
-<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value');}}</p>
+<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>'Anzahl'));}}</p>
 </div>
 
 
 <div class="col-md-4">
 <h2>Sonstiges</h2>
-<p class="form-paragraph">{{Form::textarea('bemerkung', 'Bemerkungen',array('type' => 'text', 'class' => 'form-textarea'))}}</p>
+<label class="sr-only" for="bemerkung">Email address</label>
+<p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => 'Bemerkungen'))}}</p>
 
 </div>
 <div class="col-md-4">
