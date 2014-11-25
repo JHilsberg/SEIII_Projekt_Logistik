@@ -25,7 +25,7 @@ Route::get('secure', function()
     if (Auth::check()) {
         return View::make('secure');
     }else{
-        echo 'You are not authorized to view this content!';
+        echo Lang::get('messages.not_authorized');;
     }
 });
 

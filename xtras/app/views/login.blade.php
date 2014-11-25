@@ -14,10 +14,14 @@
 <title>Xtras - Login</title>
 </head>
 <body onload="@if(Session::has('logout')) openLogoutDialog() @endif">
+                  <div class="btn-group pull-right btn-margin-top btn-margin-right btn-group-sm" role="group">
+                    <button type="button" class="btn btn-default" >DE</button>
+                    <button type="button" class="btn btn-default" >EN</button>
+                  </div>
                   <div class="container">
                        <form class="form-signin" role="form" method="POST" action="{{ URL::to('login') }}">
 
-                         <h2 class="form-signin-heading" style="text-align: center">Please sign in</h2>
+                         <h2 class="form-signin-heading" style="text-align: center">{{ trans('login.heading') }}</h2>
                          <p style="text-align: center">
                             {{ Form::text('email', Input::old('email'), array('placeholder' => 'e-mail address')) }}
                          </p>
