@@ -81,11 +81,12 @@ $(document).ready(function() {
 
 </nav>
 
-<form class="form-transport" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
 <!--<h1 class="form-heading" style="text-align: center">Formular</h1>
 -->
 <h2>{{Lang::get('formular.loading_place')}}</h2>
 
+<div class="form-group">
 <div class="col-md-4">
 <h2 class="">{{Lang::get('formular.pickup_delivery')}}</h2>
 <p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => Lang::get('formular.pickup'), 'id' => 'calendar')) }}
@@ -94,7 +95,8 @@ $(document).ready(function() {
 </p>
 <p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
 </p>
-
+</div>
+<div class="col-md-4">
 <h2>{{Lang::get('formular.means_transport')}}</h2>
 <p class="form-paragraph">{{ Form::checkbox('schiff', 'value');}} {{Lang::get('formular.ship')}}</p>
 <p class="form-paragraph">{{ Form::checkbox('lkw', 'value');}} {{Lang::get('formular.lorry')}}</p>
@@ -103,8 +105,9 @@ $(document).ready(function() {
 <p class="form-paragraph">{{ Form::checkbox('flugzeug', 'value');}} {{Lang::get('formular.airplane')}}</p>
 <p class="form-paragraph">{{ Form::checkbox('egal', 'value');}} {{Lang::get('formular.similar')}}</p>
 </div>
+</div>
 
-
+<div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.prod_info')}}</h2>
 <p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} {{Lang::get('formular.dangerous')}}</p>
@@ -118,15 +121,15 @@ $(document).ready(function() {
 <p class="form-paragraph">{{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C');}}</p>
 <p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>Lang::get('formular.quantity')));}}</p>
 </div>
+</div>
 
-
-<div class="col-md-4">
+<div class="">
 <h2>{{Lang::get('formular.other')}}</h2>
 <label class="sr-only" for="bemerkung">Email address</label>
 <p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.comment')))}}</p>
 
 </div>
-<div class="col-md-4">
+<div class="form-group, col-md-4">
 {{ Form::submit(Lang::get('formular.submit'), array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
 </div>
 </form>
