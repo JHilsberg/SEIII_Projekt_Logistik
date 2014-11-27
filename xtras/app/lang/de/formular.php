@@ -30,5 +30,7 @@ return array(
     'packaging'          => 'Warenverpackung',
     'other'              => 'Sonstiges',
     'comment'            => 'Bemerkung',
-    'submit'             => 'Abschicken'
+    'submit'             => 'Abschicken',
+    'language'           => 'Sprache wechseln',
+    'logout'             => 'Ausloggen'
 );

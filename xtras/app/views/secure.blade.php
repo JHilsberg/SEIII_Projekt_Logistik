@@ -6,8 +6,8 @@
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/bootstrap-theme.css') }}
     {{ HTML::style('css/formular.css') }}
-     {{ HTML::style('css/datepicker.css') }}
-      {{ HTML::style('css/datepicker3.css') }}
+    {{ HTML::style('css/datepicker.css') }}
+    {{ HTML::style('css/datepicker3.css') }}
     <!-- Scripts are placed here -->
     {{ HTML::script('js/jquery-2.1.1.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
@@ -57,7 +57,9 @@ $(document).ready(function() {
 
         </button>
 
-        <a href="#" class="navbar-brand">Text</a>
+        <a href="#" class="navbar-brand">
+           <img alt="Brand" src= {{ 'images/'.LaravelLocalization::setLocale().'/xtras_logo.png' }} >
+        </a>
 
     </div>
 
@@ -72,13 +74,22 @@ $(document).ready(function() {
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
-
-            <li> <a href="{{ URL::to('logout') }}">Logout</a></li>
-
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Lang::get('formular.language') }}<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <li>
+                            <a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                {{{ $properties['native'] }}}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
+            <li> <a href="{{ URL::to('logout') }}">{{Lang::get('formular.logout')}}</a></li>
         </ul>
 
     </div>
-
 </nav>
 
 <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">

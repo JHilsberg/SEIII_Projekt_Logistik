@@ -34,7 +34,7 @@ return array(
 	"different"            => "The :attribute and :other must be different.",
 	"digits"               => "The :attribute must be :digits digits.",
 	"digits_between"       => "The :attribute must be between :min and :max digits.",
-	"email"                => "The :attribute must be a valid email address.",
+	"email"                => "Die :attribute Adresse muss gültig sein.",
 	"exists"               => "The selected :attribute is invalid.",
 	"image"                => "The :attribute must be an image.",
 	"in"                   => "The selected :attribute is invalid.",
@@ -56,7 +56,7 @@ return array(
 	"not_in"               => "The selected :attribute is invalid.",
 	"numeric"              => "The :attribute must be a number.",
 	"regex"                => "The :attribute format is invalid.",
-	"required"             => "The :attribute field is required.",
+	"required"             => "Das :attribute Feld darf nicht leer sein.",
 	"required_if"          => "The :attribute field is required when :other is :value.",
 	"required_with"        => "The :attribute field is required when :values is present.",
 	"required_with_all"    => "The :attribute field is required when :values is present.",
@@ -85,23 +85,23 @@ return array(
 	*/
 
 	'custom' => array(
-		'land' => array(
+		/*'land' => array(
 			'required' => 'Bitte wählen Sie einen Verladeort aus.',
 		),
         'abholtermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-            !'before:'.$currentDate::format(mm/dd/yyyy) => 'Abholtermin muss in der Zukunft liegen.',
+            //!'before:'.$currentDate::format(mm/dd/yyyy) => 'Abholtermin muss in der Zukunft liegen.',
         ),
         'minLiefertermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-             !'before:'.$abholtermin => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
+             //!'before:'.$abholtermin => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
          ),
         'maxLiefertermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-            !'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
+            //!'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
         ),
         'Verkehrsmittel' => array(
             $_GET["schiff"] || $_GET["lkw"] || $_GET["zug"] || $_GET["pkw"] || $_GET["flugzeug"] || $_GET["egal"] == 1
@@ -135,7 +135,7 @@ return array(
         'bemerkung' => array(
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
             'max_length[1000]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
-        ),
+        ),*/
     ),
 
 	/*
@@ -149,6 +149,9 @@ return array(
 	|
 	*/
 
-	'attributes' => array(),
+	'attributes' => array(
+        'email' => 'E-Mail',
+        'password' => 'Passwort'
+    ),
 
 );

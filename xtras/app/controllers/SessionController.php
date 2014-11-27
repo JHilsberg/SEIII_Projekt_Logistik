@@ -60,5 +60,4 @@ class SessionController extends BaseController{
         return Redirect::to('login')
             ->with('logout', 'logout');
     }
-
 } 

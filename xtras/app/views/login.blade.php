@@ -15,16 +15,19 @@
 </head>
 <body onload="@if(App::getLocale() == 'de' && Session::has('logout'))openLogoutDialogDE()
                 @elseif(App::getLocale() == 'en' && Session::has('logout'))openLogoutDialogEN()@endif">
-                  <div class="btn-group pull-right btn-margin-top btn-margin-right btn-group-sm" role="group">
-                    <button type="button" class="btn btn-default" >DE</button>
-                    <button type="button" class="btn btn-default" >EN</button>
-                  </div>
-                  <div class="container">
+                    <div class="btn-group pull-right btn-margin-top btn-margin-right btn-group-sm" role="group">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a class="btn btn-default" rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+                                    {{{ $properties['native'] }}}
+                            </a>
+                        @endforeach
+                    </div>
+                <div class="container">
                        <form class="form-signin" role="form" method="POST" action="{{ URL::to('login') }}">
 
-                         <h2 class="form-signin-heading" style="text-align: center">{{ trans('login.heading') }}</h2>
+                         <h2 class="form-signin-heading" style="text-align: center">{{ Lang::get('login.heading') }}</h2>
                          <p style="text-align: center">
-                            {{ Form::text('email', Input::old('email'), array('placeholder' => 'e-mail address')) }}
+                            {{ Form::text('email', Input::old('email'), array('placeholder' => Lang::get('login.email'))) }}
                          </p>
                          <div style="height: 30dpi">
                             @if($errors->first('email'))
@@ -34,7 +37,7 @@
                             @endif
                          </div>
                          <p style="text-align: center">
-                            {{ Form::password('password', array('placeholder' => 'password')) }}
+                            {{ Form::password('password', array('placeholder' => Lang::get('login.password'))) }}
                          </p>
                          @if(Session::has('wrongPassword'))
                             <div class="alert alert-info">
@@ -48,10 +51,10 @@
                          @endif
                          <div class="checkbox" style="text-align: center">
                             <label>
-                                <input type="checkbox" value="remember-me"> Remember me
+                                <input type="checkbox" value="remember-me"> {{ Lang::get('login.remember') }}
                             </label>
                           </div>
-                          {{ Form::submit('Sign in', array('class' => 'btn btn-lg btn-primary btn-block')) }}
+                          {{ Form::submit(Lang::get('login.signin'), array('class' => 'btn btn-lg btn-primary btn-block')) }}
                        </form>
                   </div>
 

@@ -20,22 +20,20 @@ Route::get('home', function(){
     return View::make('home');
 });
 
-Route::get('secure', function()
-{
-    if (Auth::check()) {
-        return View::make('secure');
-    }else{
-        echo Lang::get('messages.not_authorized');;
-    }
-});
-
 Route::post('transportauftrag', array('uses' => 'FormController@validate'));
 
+Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
+{
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+    Route::get('login', array('uses' => 'SessionController@showLogin'));
 
-// route to show the login form
-Route::get('login', array('uses' => 'SessionController@showLogin'));
+    Route::get('secure', array('before' => 'auth', function()
+    {
+        return View::make('secure');
+    }));
 
-// route to process the form
+    Route::get('logout', array('uses' => 'SessionController@doLogout'));
+});
+
+
 Route::post('login', array('uses' => 'SessionController@doLogin'));
-
-Route::get('logout', array('uses' => 'SessionController@doLogout'));

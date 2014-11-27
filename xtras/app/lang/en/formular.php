@@ -30,5 +30,7 @@ return array(
     'packaging'          => 'Packaging',
     'other'              => 'Others',
     'comment'            => 'Comments',
-    'submit'             => 'Submit'
+    'submit'             => 'Submit',
+    'language'           => 'Change Language',
+    'logout'             => 'Logout'
 );
