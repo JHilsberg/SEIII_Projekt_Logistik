@@ -58,7 +58,7 @@ $(document).ready(function() {
         </button>
 
         <a href="#" class="navbar-brand">
-           <img alt="Brand" src= {{ 'images/'.LaravelLocalization::setLocale().'/xtras_logo.png' }} >
+           {{ HTML::image('images/xtras_logo.png') }}
         </a>
 
     </div>
