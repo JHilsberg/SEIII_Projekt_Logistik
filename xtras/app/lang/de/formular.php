@@ -32,5 +32,11 @@ return array(
     'comment'            => 'Bemerkung',
     'submit'             => 'Abschicken',
     'language'           => 'Sprache wechseln',
-    'logout'             => 'Ausloggen'
+    'logout'             => 'Ausloggen',
+    'name'               => 'Name',
+    'street'             => 'Straße',
+    'number'             => 'Hausnummer',
+    'plz'                => 'Postleitzahl',
+    'city'               => 'Ort',
+    'deliveryPlace'      => 'Zielort'
 );
