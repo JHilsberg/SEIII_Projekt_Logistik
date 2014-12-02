@@ -31,6 +31,4 @@ return array(
     'other'              => 'Others',
     'comment'            => 'Comments',
     'submit'             => 'Submit',
-    'language'           => 'Change Language',
-    'logout'             => 'Logout'
 );
