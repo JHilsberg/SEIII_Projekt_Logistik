@@ -37,6 +37,6 @@ return array(
     'plz'                => 'Postal Code*',
     'city'               => 'City*',
     'deliveryPlace'      => 'Delivery Place',
-    'save'               => 'save',
-    'markedFields'       => 'With * marked fields are mandatory fields and must be filled in.'
+    'save'               => 'Save',
+    'markedFields'       => 'With * marked fields are mandatory fields and must be filled.'
 );
