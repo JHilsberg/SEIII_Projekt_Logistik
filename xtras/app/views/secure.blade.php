@@ -99,6 +99,9 @@ $(document).ready(function() {
 -->
 
 <div class="gesamt">
+
+
+
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
@@ -165,6 +168,12 @@ $(document).ready(function() {
 <div class="top">
 <p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.comment')))}}</p>
 </div>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-md-4">
+{{Lang::get('formular.markedFields')}}
 </div>
 </div>
 
