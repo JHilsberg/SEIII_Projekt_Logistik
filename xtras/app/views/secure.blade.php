@@ -95,7 +95,24 @@ $(document).ready(function() {
 <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
 <!--<h1 class="form-heading" style="text-align: center">Formular</h1>
 -->
+<div class="form-group">
+<div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
+<p class="form-paragraph">{{ Form::text('lp_name', '',array('placeholder' => Lang::get('formular.name')));}}</p>
+<p class="form-paragraph">{{ Form::text('lp_street', '',array('placeholder' => Lang::get('formular.street')));}}
+{{ Form::text('lp_number', '',array('placeholder' => Lang::get('formular.number')));}}</p>
+<p class="form-paragraph">{{ Form::text('lp_plz', '',array('placeholder' => Lang::get('formular.plz')));}}
+{{ Form::text('lp_city', '',array('placeholder' => Lang::get('formular.city')));}}</p>
+</div>
+<div class="col-md-4">
+<h2>{{Lang::get('formular.deliveryPlace')}}</h2>
+<p class="form-paragraph">{{ Form::text('dp_name', '',array('placeholder' => Lang::get('formular.name')));}}</p>
+<p class="form-paragraph">{{ Form::text('dp_street', '',array('placeholder' => Lang::get('formular.street')));}}
+{{ Form::text('dp_number', '',array('placeholder' => Lang::get('formular.number')));}}</p>
+<p class="form-paragraph">{{ Form::text('dp_plz', '',array('placeholder' => Lang::get('formular.plz')));}}
+{{ Form::text('dp_city', '',array('placeholder' => Lang::get('formular.city')));}}</p>
+</div>
+</div>
 
 <div class="form-group">
 <div class="col-md-4">
