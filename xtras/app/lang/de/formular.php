@@ -20,7 +20,7 @@ return array(
     'container'          => 'Container',
     'pallet'             => 'Palette',
     'boxes'              => 'Boxen',
-    'quantity'           => 'Anzahl Transportbehälter',
+    'quantity'           => 'Anzahl Behälter',
     'prod_info'          => 'Wareninformationen',
     'dangerous'          => 'Gefahrgut',
     'description_goods'  => 'Warenbeschreibung',
