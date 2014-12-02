@@ -7,49 +7,121 @@
  */
 class FormController  extends BaseController
 {
+
     public function validate()
     {
-        $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
-        $abholtermin= $_POST["abholtermin"];
-        $minLiefertermin= $_POST["minLiefertermin"];
+
+
+        //$abholtermin= $_POST["abholtermin"];
+        //$minLiefertermin= $_POST["minLiefertermin"];
+        //$checkboxVerkehrsmittel= !is_null(Input::get('schiff')) || !is_null(Input::get('lkw')) || !is_null(Input::get('zug')) ||
+        //    !is_null(Input::get('pkw')) || !is_null(Input::get('flugzeug')) || !is_null(Input::get('egal'));
 
         // validate the info, create rules for the inputs
         $rules = array(
-          /** 'abholadresse_ort' => 'trim|required|alpha_dash',
-            'abholadresse_strasse' => 'trim|required|alpha_dash',
-            'abholadresse_hausnummer' => 'trim|required|alpha_num',
-            'abholadresse_postleitzahl' => 'trim|required|num|exact_length[5]',
-            'abholadresse_land' => 'trim|required|alpha',
-
-            'lieferadresse_ort' => 'trim|required|alpha_dash',
-            'lieferadresse_strasse' => 'trim|required|alpha_dash',
-            'lieferadresse_hausnummer' => 'trim|required|alpha_num',
-            'lieferadresse_postleitzahl' => 'trim|required|num|exact_length[5]',
-            'lieferadresse_land' => 'trim|required|alpha',
-           */
-
-            'abholtermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$currentDate->format('mm/dd/yyyy'),
-            'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
-            'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
-
-            'Verkehrsmittel' => '$_POST["schiff"] || $_POST["lkw"] || $_POST["zug"] || $_POST["pkw"] || $_POST["flugzeug"] || $_POST["egal"] == 1',
 
 
-            'anzahlBehaelter' => 'required|is_natural_no_zero',
+            'lp_name' => 'required|alpha_dash',
+            'lp_street' => 'required|alpha_dash',
+            'lp_number' => 'required|alpha_num',
+            'lp_plz' => 'required|numeric|digits:5',
+            'lp_city' => 'required|alpha_dash',
 
-            'beschreibung' => 'required|alpha_dash|max_length[10000]',
+            'dp_name' => 'required|alpha_dash',
+            'dp_street' => 'required|alpha_dash',
+            'dp_number' => 'required|alpha_num',
+            'dp_plz' => 'required|numeric|digits:5',
+            'dp_city' => 'required|alpha_dash',
 
-            'gewicht' => 'required|is_natural_no_zero',
 
-            'verpackung' => 'alpha_dash|max_length[100]',
+           // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
+           // 'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
+           // 'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
 
-            'bemerkung' => 'alpha_dash|max_length[1000]'
+            /**'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,*/
+
+            /**'behaelter' => $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen',*/
+
+
+            'anzahlBehaelter' => 'required|numeric',
+
+            'beschreibung' => 'required|alpha_dash|digits_between:0,250',
+
+            'gewicht' => 'required|numeric',
+
+            /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
+
+            'verpackung' => 'alpha_dash|digits_between:0,100',
+
+            'bemerkung' => 'alpha_dash|digits_between:0,250'
 
 
         );
 
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
+
+       /** $validator -> sometimes('abholtermin', 'liegtInVergangenheit', function()
+        {
+            $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
+            $abholtermin= Input::get('abholtermin');
+            return   $abholtermin = !before:$currentDate->format('mm/dd/yyyy');
+        });*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {

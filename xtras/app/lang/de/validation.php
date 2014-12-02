@@ -84,8 +84,8 @@ return array(
 	|
 	*/
 
-	'custom' => array(
-		/*'land' => array(
+	'custom' => array(/**
+		'land' => array(
 			'required' => 'Bitte wählen Sie einen Verladeort aus.',
 		),
         'abholtermin' => array(
@@ -104,17 +104,16 @@ return array(
             //!'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
         ),
         'Verkehrsmittel' => array(
-            $_GET["schiff"] || $_GET["lkw"] || $_GET["zug"] || $_GET["pkw"] || $_GET["flugzeug"] || $_GET["egal"] == 1
+            $checkboxVerkehrsmittel.' == 1'
             => 'Es muss mindestens ein Feld ausgewählt sein.',
         ),
         'behaelter' => array(
-            $_GET["behaelter"] == 'Container' || $_GET["behaelter"] == 'Palette' || $_GET["behaelter"] == 'Boxen'
+            $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
             => 'Sie haben einen falschen Behälter ausgewählt.',
-        ),
+        ),'*/
         'anzahlBehaelter' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'is_natural_no_zero' => 'Anzahl der Transportbehälter ist ungültig.',
-        ),
+        ),/**
         'beschreibung' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
@@ -125,7 +124,7 @@ return array(
             'is_natural_no_zero' => 'Gewicht ist ungültig.',
         ),
         'einheit' => array(
-            $_GET["einheit"] == 'Kilogramm' || $_GET["einheit"] == 'Tonnen'
+            $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen'
             => 'Sie haben eine falsche Einheit ausgewählt.',
         ),
         'verpackung' => array(

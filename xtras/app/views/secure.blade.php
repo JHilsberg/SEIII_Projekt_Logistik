@@ -106,18 +106,115 @@ $(document).ready(function() {
 <div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
 <p class="form-paragraph">{{ Form::text('lp_name', '',array('placeholder' => Lang::get('formular.name')));}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('lp_name'))
+              <div class="alert alert-info">
+                  {{ $errors->first('lp_name') }}
+               </div>
+           @endif
+      </div>
+
+
+
 <p class="form-paragraph">{{ Form::text('lp_street', '',array('placeholder' => Lang::get('formular.street')));}}
+
 {{ Form::text('lp_number', '',array('placeholder' => Lang::get('formular.number')));}}</p>
+
+
+     <div style="height: 30dpi">
+          @if($errors->first('lp_street'))
+              <div class="alert alert-info">
+                  {{ $errors->first('lp_street') }}
+               </div>
+           @endif
+      </div>
+
+
+     <div style="height: 30dpi">
+          @if($errors->first('lp_number'))
+              <div class="alert alert-info">
+                  {{ $errors->first('lp_number') }}
+               </div>
+           @endif
+      </div>
+
+
 <p class="form-paragraph">{{ Form::text('lp_plz', '',array('placeholder' => Lang::get('formular.plz')));}}
 {{ Form::text('lp_city', '',array('placeholder' => Lang::get('formular.city')));}}</p>
+
+
+     <div style="height: 30dpi">
+          @if($errors->first('lp_plz'))
+              <div class="alert alert-info">
+                  {{ $errors->first('lp_plz') }}
+               </div>
+           @endif
+      </div>
+
+
+     <div style="height: 30dpi">
+          @if($errors->first('lp_city'))
+              <div class="alert alert-info">
+                  {{ $errors->first('lp_city') }}
+               </div>
+           @endif
+      </div>
+
+
 </div>
 <div class="col-md-4">
 <h2>{{Lang::get('formular.deliveryPlace')}}</h2>
 <p class="form-paragraph">{{ Form::text('dp_name', '',array('placeholder' => Lang::get('formular.name')));}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('dp_name'))
+              <div class="alert alert-info">
+                  {{ $errors->first('dp_name') }}
+               </div>
+           @endif
+      </div>
+
 <p class="form-paragraph">{{ Form::text('dp_street', '',array('placeholder' => Lang::get('formular.street')));}}
 {{ Form::text('dp_number', '',array('placeholder' => Lang::get('formular.number')));}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('dp_street'))
+              <div class="alert alert-info">
+                  {{ $errors->first('dp_street') }}
+               </div>
+           @endif
+      </div>
+
+           <div style="height: 30dpi">
+                @if($errors->first('dp_number'))
+                    <div class="alert alert-info">
+                        {{ $errors->first('dp_number') }}
+                     </div>
+                 @endif
+            </div>
+
+
 <p class="form-paragraph">{{ Form::text('dp_plz', '',array('placeholder' => Lang::get('formular.plz')));}}
 {{ Form::text('dp_city', '',array('placeholder' => Lang::get('formular.city')));}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('dp_plz'))
+              <div class="alert alert-info">
+                  {{ $errors->first('dp_plz') }}
+               </div>
+           @endif
+      </div>
+
+           <div style="height: 30dpi">
+                @if($errors->first('dp_city'))
+                    <div class="alert alert-info">
+                        {{ $errors->first('dp_city') }}
+                     </div>
+                 @endif
+            </div>
+
+
 </div>
 </div>
 
@@ -137,6 +234,13 @@ $(document).ready(function() {
 <p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>Lang::get('formular.quantity')));}}
 {{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C');}}
 </p>
+     <div style="height: 30dpi">
+          @if($errors->first('anzahlBehaelter'))
+              <div class="alert alert-info">
+                  {{ $errors->first('anzahlBehaelter') }}
+               </div>
+           @endif
+      </div>
 
 </div>
 </div>
@@ -158,15 +262,50 @@ $(document).ready(function() {
 <h2>{{Lang::get('formular.prod_info')}}</h2>
 <p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} {{Lang::get('formular.dangerous')}}</p>
 <p class="form-paragraph">{{Form::textarea('beschreibung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.description_goods')));}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('beschreibung'))
+              <div class="alert alert-info">
+                  {{ $errors->first('beschreibung') }}
+               </div>
+           @endif
+      </div>
+
 <p class="form-paragraph">{{Form::number('gewicht', 'value',array('placeholder'=>Lang::get('formular.weight')));}}
 {{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T');}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('gewicht'))
+              <div class="alert alert-info">
+                  {{ $errors->first('gewicht') }}
+               </div>
+           @endif
+      </div>
+
 <p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging')));}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('verpackung'))
+              <div class="alert alert-info">
+                  {{ $errors->first('verpackung') }}
+               </div>
+           @endif
+      </div>
 </div>
 
 <div class="col-md-4">
 <h2>{{Lang::get('formular.other')}}</h2>
 <div class="top">
 <p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.comment')))}}</p>
+
+     <div style="height: 30dpi">
+          @if($errors->first('bemerkung'))
+              <div class="alert alert-info">
+                  {{ $errors->first('bemerkung') }}
+               </div>
+           @endif
+      </div>
+
 </div>
 </div>
 </div>
