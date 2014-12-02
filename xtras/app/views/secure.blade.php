@@ -69,13 +69,15 @@ $(document).ready(function() {
 
         <ul class="nav navbar-nav">
 
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">{{Lang::get('menu.new_order')}}</a></li>
+            <li class=""><a href="#">{{Lang::get('menu.order_history')}}</a></li>
+            <li class=""><a href="#">{{Lang::get('menu.account')}}</a></li>
 
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Lang::get('formular.language') }}<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Lang::get('menu.language') }}<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <li>
@@ -86,7 +88,7 @@ $(document).ready(function() {
                     @endforeach
                 </ul>
             </li>
-            <li> <a href="{{ URL::to('logout') }}">{{Lang::get('formular.logout')}}</a></li>
+            <li> <a href="{{ URL::to('logout') }}">{{Lang::get('menu.logout')}}</a></li>
         </ul>
 
     </div>
