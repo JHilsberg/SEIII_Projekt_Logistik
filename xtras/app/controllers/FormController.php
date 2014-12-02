@@ -34,7 +34,6 @@ class FormController  extends BaseController
             'dp_city' => 'required|alpha_dash',
 
 
-
            // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
            // 'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
            // 'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,

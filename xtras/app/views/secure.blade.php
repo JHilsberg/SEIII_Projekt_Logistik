@@ -257,6 +257,7 @@ $(document).ready(function() {
 </div>
 </div>
 
+
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.prod_info')}}</h2>
