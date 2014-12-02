@@ -97,6 +97,8 @@ $(document).ready(function() {
 <form class="form-horizontal" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
 <!--<h1 class="form-heading" style="text-align: center">Formular</h1>
 -->
+
+<div class="gesamt">
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
@@ -153,13 +155,16 @@ $(document).ready(function() {
 <h2>{{Lang::get('formular.prod_info')}}</h2>
 <p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} {{Lang::get('formular.dangerous')}}</p>
 <p class="form-paragraph">{{Form::textarea('beschreibung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.description_goods')));}}</p>
-<p class="form-paragraph">{{Form::number('gewicht', 'value',array('placeholder'=>Lang::get('formular.weight')));}}{{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T');}}</p>
+<p class="form-paragraph">{{Form::number('gewicht', 'value',array('placeholder'=>Lang::get('formular.weight')));}}
+{{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T');}}</p>
 <p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging')));}}</p>
 </div>
 
 <div class="col-md-4">
 <h2>{{Lang::get('formular.other')}}</h2>
+<div class="top">
 <p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.comment')))}}</p>
+</div>
 </div>
 </div>
 
@@ -169,6 +174,7 @@ $(document).ready(function() {
 </div>
 <div class="col-md-4">
 {{ Form::submit(Lang::get('formular.save'), array('class' => 'btn btn-lg btn-primary btn-block')) }}
+</div>
 </div>
 </div>
 </form>

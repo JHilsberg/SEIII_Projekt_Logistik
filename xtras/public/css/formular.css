@@ -4,6 +4,13 @@ body {
     background-color: #eee;
 }
 
+.gesamt{
+    padding-left: 5px;
+}
+.top{
+    padding-top: 45px;
+}
+
 .form-transport {
     max-width: auto;
     padding: 15px;
@@ -13,8 +20,9 @@ body {
     margin-bottom: 10px;
     max-width: 230px;
 }
-.form-textarea{
-    max-width: 200px;
+.area{
+    margin-top: 45px;
+    padding-top: 50px;
 
 }
 .form-button{
