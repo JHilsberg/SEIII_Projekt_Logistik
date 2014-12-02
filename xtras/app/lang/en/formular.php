@@ -38,5 +38,5 @@ return array(
     'city'               => 'City*',
     'deliveryPlace'      => 'Delivery Place',
     'save'               => 'save',
-    'markedFields'       => 'With * marked fields are mandatory fields and must be filled in.'
+    'markedFields'       => 'With * marked fields are mandatory fields and must be filled.'
 );
