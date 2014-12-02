@@ -123,7 +123,18 @@ $(document).ready(function() {
 </p>
 <p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control datepicker, form-datepicker','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
 </p>
+
+
+<div>
+<h2>{{Lang::get('formular.casket')}}</h2>
+<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>Lang::get('formular.quantity')));}}
+{{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C');}}
+</p>
+
 </div>
+</div>
+
+
 <div class="col-md-4">
 <h2>{{Lang::get('formular.means_transport')}}</h2>
 <p class="form-paragraph">{{ Form::checkbox('schiff', 'value');}} {{Lang::get('formular.ship')}}</p>
@@ -145,20 +156,18 @@ $(document).ready(function() {
 </div>
 
 <div class="col-md-4">
-<h2>{{Lang::get('formular.casket')}}</h2>
-<p class="form-paragraph">{{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C');}}</p>
-<p class="form-paragraph">{{Form::number('anzahlBehaelter', 'value',array('placeholder' =>Lang::get('formular.quantity')));}}</p>
-</div>
-</div>
-
-<div class="">
 <h2>{{Lang::get('formular.other')}}</h2>
-<label class="sr-only" for="bemerkung">Email address</label>
 <p class="form-paragraph">{{Form::textarea('bemerkung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.comment')))}}</p>
-
 </div>
-<div class="form-group, col-md-4">
+</div>
+
+<div class="form-group">
+<div class="col-md-4">
 {{ Form::submit(Lang::get('formular.submit'), array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
+</div>
+<div class="col-md-4">
+{{ Form::submit(Lang::get('formular.save'), array('class' => 'btn btn-lg btn-primary btn-block')) }}
+</div>
 </div>
 </form>
 </body>

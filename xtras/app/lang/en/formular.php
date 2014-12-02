@@ -38,5 +38,6 @@ return array(
     'number'             => 'Number',
     'plz'                => 'Postal Code',
     'city'               => 'City',
-    'deliveryPlace'      => 'Delivery Place'
+    'deliveryPlace'      => 'Delivery Place',
+    'save'               => 'save'
 );

@@ -38,5 +38,6 @@ return array(
     'number'             => 'Hausnummer',
     'plz'                => 'Postleitzahl',
     'city'               => 'Ort',
-    'deliveryPlace'      => 'Zielort'
+    'deliveryPlace'      => 'Zielort',
+    'save'               => 'Speichern'
 );
