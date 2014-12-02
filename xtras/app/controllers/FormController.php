@@ -10,8 +10,8 @@ class FormController  extends BaseController
     public function validate()
     {
         $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
-        $abholtermin= $_GET["abholtermin"];
-        $minLiefertermin= $_GET["minLiefertermin"];
+        $abholtermin= $_POST["abholtermin"];
+        $minLiefertermin= $_POST["minLiefertermin"];
 
         // validate the info, create rules for the inputs
         $rules = array(
@@ -28,20 +28,18 @@ class FormController  extends BaseController
             'lieferadresse_land' => 'trim|required|alpha',
            */
 
-            'abholtermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$currentDate::format(mm/dd/yyyy),
+            'abholtermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$currentDate->format('mm/dd/yyyy'),
             'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
             'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
 
-            'Verkehrsmittel' => $_GET["schiff"] || $_GET["lkw"] || $_GET["zug"] || $_GET["pkw"] || $_GET["flugzeug"] || $_GET["egal"] == 1,
+            'Verkehrsmittel' => '$_POST["schiff"] || $_POST["lkw"] || $_POST["zug"] || $_POST["pkw"] || $_POST["flugzeug"] || $_POST["egal"] == 1',
 
 
-            'behaelter' => $_GET["behaelter"] == 'Container' || $_GET["behaelter"] == 'Palette' || $_GET["behaelter"] == 'Boxen',
             'anzahlBehaelter' => 'required|is_natural_no_zero',
 
             'beschreibung' => 'required|alpha_dash|max_length[10000]',
 
             'gewicht' => 'required|is_natural_no_zero',
-            'einheit' => $_GET["einheit"] == 'Kilogramm' || $_GET["einheit"] == 'Tonnen',
 
             'verpackung' => 'alpha_dash|max_length[100]',
 
