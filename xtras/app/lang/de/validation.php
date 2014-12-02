@@ -84,10 +84,51 @@ return array(
 	|
 	*/
 
-	'custom' => array(/**
-		'land' => array(
-			'required' => 'Bitte wählen Sie einen Verladeort aus.',
-		),
+	'custom' => array(
+
+        'lp_name' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'lp_street' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'lp_number' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_num' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'lp_plz' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'numeric' => 'Sie haben ungültige Zeichen angegeben.',
+            'digits' => 'Die Postleitzahl muss 5 Zeichen lang sein.',
+        ),
+        'lp_city' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'dp_name' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'dp_street' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'dp_number' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_num' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'dp_plz' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'numeric' => 'Sie haben ungültige Zeichen angegeben.',
+            'digits' => 'Die Postleitzahl muss 5 Zeichen lang sein.',
+        ),
+        'dp_city' => array(
+            'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        /**
         'abholtermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
@@ -111,17 +152,18 @@ return array(
             $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
             => 'Sie haben einen falschen Behälter ausgewählt.',
         ),'*/
+
         'anzahlBehaelter' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-        ),/**
+        ),
         'beschreibung' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'max_length[10000]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'gewicht' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'is_natural_no_zero' => 'Gewicht ist ungültig.',
+            'numeric' => 'Gewicht ist ungültig.',
         ),
         'einheit' => array(
             $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen'
@@ -129,12 +171,12 @@ return array(
         ),
         'verpackung' => array(
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'max_length[100]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'bemerkung' => array(
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'max_length[1000]' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
-        ),*/
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
     ),
 
 	/*
