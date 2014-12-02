@@ -31,8 +31,6 @@ return array(
     'other'              => 'Sonstiges',
     'comment'            => 'Bemerkung',
     'submit'             => 'Abschicken',
-    'language'           => 'Sprache wechseln',
-    'logout'             => 'Ausloggen',
     'name'               => 'Name',
     'street'             => 'Straße',
     'number'             => 'Hausnummer',
