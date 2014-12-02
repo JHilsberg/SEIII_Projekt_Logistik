@@ -18,7 +18,7 @@ return array(
     'similar'            => 'Indifferent',
     'casket'             => 'Casket',
     'container'          => 'Container',
-    'pallet'             => 'Pallet',
+    'pallet'             => 'Pallets',
     'boxes'              => 'Boxes',
     'quantity'           => 'Quantity of casket',
     'prod_info'          => 'Goods information',

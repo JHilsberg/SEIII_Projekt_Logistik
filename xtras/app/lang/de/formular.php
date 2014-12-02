@@ -18,7 +18,7 @@ return array(
     'similar'            => 'Egal',
     'casket'             => 'Transportbehälter',
     'container'          => 'Container',
-    'pallet'             => 'Palette',
+    'pallet'             => 'Paletten',
     'boxes'              => 'Boxen',
     'quantity'           => 'Anzahl Behälter',
     'prod_info'          => 'Wareninformationen',
