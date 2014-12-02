@@ -179,10 +179,14 @@ $(document).ready(function() {
 
 <div class="form-group">
 <div class="col-md-4">
+<div class="button-space">
 {{ Form::submit(Lang::get('formular.submit'), array('class' => 'btn btn-lg btn-primary btn-block btn-success')) }}
 </div>
+</div>
+<div class="button-space">
 <div class="col-md-4">
 {{ Form::submit(Lang::get('formular.save'), array('class' => 'btn btn-lg btn-primary btn-block')) }}
+</div>
 </div>
 </div>
 </div>

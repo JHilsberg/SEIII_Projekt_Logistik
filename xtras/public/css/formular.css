@@ -5,7 +5,10 @@ body {
 }
 
 .gesamt{
-    padding-left: 5px;
+    padding-left: 10px;
+}
+.button-space{
+    margin-top: 5px;
 }
 .top{
     padding-top: 45px;
