@@ -6,5 +6,7 @@ return array(
     'remember' => 'Eingeloggt bleiben',
     'email' => 'E-Mail Adresse',
     'password' => 'Passwort',
-    'signin' => 'Einloggen'
+    'signin' => 'Einloggen',
+    'notpassuser' => 'Passwort und Benutzername stimmen nicht überein.'
 );
+

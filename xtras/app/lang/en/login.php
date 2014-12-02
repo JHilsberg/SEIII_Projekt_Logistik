@@ -6,5 +6,6 @@ return array(
     'remember' => 'Remember me',
     'email' => 'e-mail address',
     'password' => 'password',
-    'signin' => 'Sign in'
+    'signin' => 'Sign in',
+    'notpassuser' => 'Password and username does not match.'
 );
