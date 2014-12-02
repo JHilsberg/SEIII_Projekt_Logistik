@@ -70,8 +70,8 @@ $(document).ready(function() {
         <ul class="nav navbar-nav">
 
             <li class="active"><a href="#">{{Lang::get('menu.new_order')}}</a></li>
-            <li class=""><a href="#">{{Lang::get('menu.order_history')}}</a></li>
-            <li class=""><a href="#">{{Lang::get('menu.account')}}</a></li>
+            <li class=""><a href="{{ URL::to('orderHistory') }}">{{Lang::get('menu.order_history')}}</a></li>
+            <li class=""><a href="{{ URL::to('myAccount') }}">{{Lang::get('menu.account')}}</a></li>
 
         </ul>
 

@@ -33,6 +33,14 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     }));
 
     Route::get('logout', array('uses' => 'SessionController@doLogout'));
+
+    Route::get('orderHistory', array('before' => 'auth', function(){
+        return View::make('orderHistory');
+    }));
+
+    Route::get('myAccount', array('before' => 'auth', function(){
+        return View::make('myAccount');
+    }));
 });
 
 
