@@ -31,4 +31,12 @@ return array(
     'other'              => 'Others',
     'comment'            => 'Comments',
     'submit'             => 'Submit',
+    'language'           => 'Change Language',
+    'logout'             => 'Logout',
+    'name'               => 'Name',
+    'street'             => 'Street',
+    'number'             => 'Number',
+    'plz'                => 'Postal Code',
+    'city'               => 'City',
+    'deliveryPlace'      => 'Delivery Place'
 );
