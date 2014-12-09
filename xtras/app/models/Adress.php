@@ -7,5 +7,6 @@
  */
 
 class Adress extends Eloquent{
-
+    public $table = 'addresses';
+    public $timestamps = false;
 }

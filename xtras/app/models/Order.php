@@ -7,5 +7,6 @@
  */
 
 class Order extends Eloquent{
-
+    public $table = 'orders';
+    public $timestamps = false;
 }

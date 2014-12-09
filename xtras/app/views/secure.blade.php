@@ -252,12 +252,12 @@ $(document).ready(function() {
 
 <div class="col-md-4">
 <h2>{{Lang::get('formular.means_transport')}}</h2>
-<p class="form-paragraph">{{ Form::checkbox('schiff', 'value');}} {{Lang::get('formular.ship')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('lkw', 'value');}} {{Lang::get('formular.lorry')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('zug', 'value');}} {{Lang::get('formular.train')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('pkw', 'value');}} {{Lang::get('formular.car')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('flugzeug', 'value');}} {{Lang::get('formular.airplane')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('egal', 'value');}} {{Lang::get('formular.similar')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('schiff', '1');}} {{Lang::get('formular.ship')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('lkw', '1');}} {{Lang::get('formular.lorry')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('zug', '1');}} {{Lang::get('formular.train')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('pkw', '1');}} {{Lang::get('formular.car')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('flugzeug', '1');}} {{Lang::get('formular.airplane')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('egal', '1');}} {{Lang::get('formular.similar')}}</p>
 </div>
 </div>
 
@@ -265,7 +265,7 @@ $(document).ready(function() {
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.prod_info')}}</h2>
-<p class="form-paragraph">{{ Form::checkbox('gefahrgut', 'value');}} {{Lang::get('formular.dangerous')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('gefahrgut', '1');}} {{Lang::get('formular.dangerous')}}</p>
 <p class="form-paragraph">{{Form::textarea('beschreibung', '',array('type' => 'text', 'class' => 'form-textarea','placeholder' => Lang::get('formular.description_goods')));}}</p>
 
      <div style="height: 30dpi">

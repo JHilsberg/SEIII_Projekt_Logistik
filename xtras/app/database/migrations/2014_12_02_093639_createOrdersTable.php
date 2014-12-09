@@ -63,16 +63,16 @@ class CreateOrdersTable extends Migration {
             $table->integer('anzahltransportbehaelter');
             $table->string('transportbehaelter',50);
             $table->string('warenbeschreibung',250);
-            $table->boolean('gefahrengut');
+            $table->boolean('gefahrengut')->default(0);
             $table->string('warenverpackung',250);
             $table->float('warengewicht',20);
             $table->string('bemerkung',250);
-            $table->boolean('lkw');
-            $table->boolean('schiff');
-            $table->boolean('zug');
-            $table->boolean('pkw');
-            $table->boolean('flugzeug');
-            $table->boolean('egal');
+            $table->boolean('lkw')->default(0);
+            $table->boolean('schiff')->default(0);
+            $table->boolean('zug')->default(0);
+            $table->boolean('pkw')->default(0);
+            $table->boolean('flugzeug')->default(0);
+            $table->boolean('egal')->default(0);
             $table->timestamp('abgesendet');
 
 
