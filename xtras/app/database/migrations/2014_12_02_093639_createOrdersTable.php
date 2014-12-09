@@ -15,9 +15,9 @@ class CreateOrdersTable extends Migration {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('userid')->references('id')->on('users');
-            $table->integer('abholadresse', 32)->references('id')->on('adresses');
-            $table->integer('lieferadresse', 32)->references('id')->on('adresses');
+            $table->integer('userid',32)->references('id')->on('users');
+            $table->integer('abholadresse', 32)->references('id')->on('addresses');
+            $table->integer('lieferadresse', 32)->references('id')->on('addresses');
 
             $table->date('lieferdatum',10);
             $table->date('minlieferzeit',10);
