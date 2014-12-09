@@ -283,7 +283,7 @@ $(document).ready(function() {
            @endif
       </div>
 
-<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging')));}}</p>
+<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control datepicker, form-datepicker','placeholder'));}}</p>
 
      <div style="height: 30dpi">
           @if($errors->first('verpackung'))
@@ -308,12 +308,6 @@ $(document).ready(function() {
       </div>
 
 </div>
-</div>
-</div>
-
-<div class="form-group">
-<div class="col-md-4">
-{{Lang::get('formular.markedFields')}}
 </div>
 </div>
 

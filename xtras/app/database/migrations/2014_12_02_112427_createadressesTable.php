@@ -12,7 +12,7 @@ class CreateadressesTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('adresses', function (Blueprint $table) {
+        Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('firma', 32);
             $table->string('strasse', 64);
@@ -26,7 +26,7 @@ class CreateadressesTable extends Migration {
 
 	public function down()
     {
-        Schema::drop('adresses');
+        Schema::drop('addresses');
     }
 
 }
