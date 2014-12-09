@@ -16,8 +16,8 @@ class CreateOrdersTable extends Migration {
             $table->increments('id');
 
             $table->integer('userid')->references('id')->on('users');
-            $table->string('abholadresse', 32)->references('id')->on('adresses');
-            $table->string('lieferadresse', 32)->references('adresses')->on('adresses');
+            $table->integer('abholadresse', 32)->references('id')->on('adresses');
+            $table->integer('lieferadresse', 32)->references('id')->on('adresses');
 
             $table->date('lieferdatum',10);
             $table->date('minlieferzeit',10);
