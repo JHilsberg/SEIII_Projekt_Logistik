@@ -14,10 +14,10 @@ class CreateOrdersTable extends Migration {
 	{
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('userid')->references('id')->on('users');
+            $table->integer('abholadresse')->references('id')->on('addresses');
 
-            $table->integer('userid',32)->references('id')->on('users');
-            $table->integer('abholadresse', 32)->references('id')->on('addresses');
-            $table->integer('lieferadresse', 32)->references('id')->on('addresses');
+            $table->integer('lieferadresse')->references('id')->on('addresses');
 
             $table->date('lieferdatum',10);
             $table->date('minlieferzeit',10);
@@ -29,6 +29,7 @@ class CreateOrdersTable extends Migration {
             $table->string('warenverpackung',250);
             $table->float('warengewicht',20);
             $table->string('bemerkung',250);
+            $table->timestamp('abegesendet');
 
         });
     }
