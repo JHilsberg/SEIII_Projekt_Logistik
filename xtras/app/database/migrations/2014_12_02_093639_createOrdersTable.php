@@ -23,8 +23,8 @@ class CreateOrdersTable extends Migration {
             $table->date('minlieferzeit',10);
             $table->date('maxlieferzeit',10);
 
-            $table->integer('anzahlcontainer',50);
-            $table->string('container',50);
+            $table->integer('anzahltransportbehaelter',50);
+            $table->string('transportbehaelter',50);
             $table->string('warenbeschreibung',250);
             $table->boolean('gefahrengut');
             $table->string('warenverpackung',250);
