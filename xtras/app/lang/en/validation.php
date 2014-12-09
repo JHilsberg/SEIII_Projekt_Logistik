@@ -84,22 +84,117 @@ return array(
 	|
 	*/
 
-	'custom' => array(
-		'attribute-name' => array(
-			'rule-name' => 'custom-message',
-		),
-	),
+    'custom' => array(
 
-	/*
-	|--------------------------------------------------------------------------
-	| Custom Validation Attributes
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines are used to swap attribute place-holders
-	| with something more reader friendly such as E-Mail Address instead
-	| of "email". This simply helps us make messages a little cleaner.
-	|
-	*/
+        'lp_name' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'You have entered invalid characters.',
+        ),
+        'lp_street' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'You have entered invalid characters.',
+        ),
+        'lp_number' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_num' => 'You have entered invalid characters.',
+        ),
+        'lp_plz' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'numeric' => 'You have entered invalid characters.',
+            'digits' => 'Die Postleitzahl muss 5 Zeichen lang sein.',
+        ),
+        'lp_city' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'You have entered invalid characters.',
+        ),
+        'dp_name' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'You have entered invalid characters.',
+        ),
+        'dp_street' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'You have entered invalid characters.',
+        ),
+        'dp_number' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_num' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        'dp_plz' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'numeric' => 'Sie haben ungültige Zeichen angegeben.',
+            'digits' => 'Die Postleitzahl muss 5 Zeichen lang sein.',
+        ),
+        'dp_city' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+        ),
+        /**
+        'abholtermin' => array(
+        'required' => 'This mandatory field can not be empty.',
+        'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
+        //!'before:'.$currentDate::format(mm/dd/yyyy) => 'Abholtermin muss in der Zukunft liegen.',
+        ),
+        'minLiefertermin' => array(
+        'required' => 'This mandatory field can not be empty.',
+        'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
+        //!'before:'.$abholtermin => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
+        ),
+        'maxLiefertermin' => array(
+        'required' => 'This mandatory field can not be empty.',
+        'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
+        //!'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
+        ),
+
+        'Verkehrsmittel' => array(
+        $checkboxVerkehrsmittel.' == 1' => 'Es muss mindestens ein Feld ausgewählt sein.',
+        ),
+
+        'behaelter' => array(
+        $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
+        => 'Sie haben einen falschen Behälter ausgewählt.',
+        ),'*/
+
+        'anzahlBehaelter' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'numeric' => 'Anzahl ist ungültig.',
+            'min' => 'Die Anzahl der Behälter muss mindestens 1 sein.',
+        ),
+        'beschreibung' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
+        'gewicht' => array(
+            'required' => 'This mandatory field can not be empty.',
+            'numeric' => 'Gewicht ist ungültig.',
+            'min' => 'Das Gewicht der Ware muss angegeben werden.',
+        ),
+        /**
+        'einheit' => array(
+            $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen'
+            => 'Sie haben eine falsche Einheit ausgewählt.',
+        ),*/
+        'verpackung' => array(
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
+        'bemerkung' => array(
+            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+        ),
+    ),
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Attributes
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used to swap attribute place-holders
+    | with something more reader friendly such as E-Mail Address instead
+    | of "email". This simply helps us make messages a little cleaner.
+    |
+    */
 
 	'attributes' => array(),
 
