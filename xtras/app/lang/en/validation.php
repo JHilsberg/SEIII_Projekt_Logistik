@@ -101,7 +101,7 @@ return array(
         'lp_plz' => array(
             'required' => 'This mandatory field can not be empty.',
             'numeric' => 'You have entered invalid characters.',
-            'digits' => 'Die Postleitzahl muss 5 Zeichen lang sein.',
+            'digits' => 'The zip code must be 5 digits.',
         ),
         'lp_city' => array(
             'required' => 'This mandatory field can not be empty.',
@@ -117,16 +117,16 @@ return array(
         ),
         'dp_number' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_num' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_num' => 'You have entered invalid characters.',
         ),
         'dp_plz' => array(
             'required' => 'This mandatory field can not be empty.',
-            'numeric' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits' => 'Die Postleitzahl muss 5 Zeichen lang sein.',
+            'numeric' => 'You have entered invalid characters.',
+            'digits' => 'The zip code must be 5 digits.',
         ),
         'dp_city' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_dash' => 'You have entered invalid characters.',
         ),
         /**
         'abholtermin' => array(
@@ -156,18 +156,18 @@ return array(
 
         'anzahlBehaelter' => array(
             'required' => 'This mandatory field can not be empty.',
-            'numeric' => 'Anzahl ist ungültig.',
-            'min' => 'Die Anzahl der Behälter muss mindestens 1 sein.',
+            'numeric' => 'Number is invalid.',
+            'min' => 'The number of containers must be at least 1.',
         ),
         'beschreibung' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'alpha_dash' => 'You have entered invalid characters.',
+            'digits_between' => 'You have exceeded the maximum character length for this field.',
         ),
         'gewicht' => array(
             'required' => 'This mandatory field can not be empty.',
-            'numeric' => 'Gewicht ist ungültig.',
-            'min' => 'Das Gewicht der Ware muss angegeben werden.',
+            'numeric' => 'Number is invalid.',
+            'min' => 'The weight of the goods must be specified. ',
         ),
         /**
         'einheit' => array(
@@ -175,12 +175,12 @@ return array(
             => 'Sie haben eine falsche Einheit ausgewählt.',
         ),*/
         'verpackung' => array(
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'alpha_dash' => 'You have entered invalid characters.',
+            'digits_between' => 'You have exceeded the maximum character length for this field.',
         ),
         'bemerkung' => array(
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'alpha_dash' => 'You have entered invalid characters.',
+            'digits_between' => 'You have exceeded the maximum character length for this field.',
         ),
     ),
 
