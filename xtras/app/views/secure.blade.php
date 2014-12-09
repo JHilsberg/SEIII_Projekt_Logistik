@@ -22,6 +22,9 @@
 $(document).ready(function() {
     $('#calendar').datepicker({
     });
+    $('#calendar').keydown(function(event){
+    return false;
+    });
 } );
 </script>
 <script type="text/javascript">
@@ -105,7 +108,7 @@ $(document).ready(function() {
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
-<p class="form-paragraph">{{ Form::text('lp_name', '',array('placeholder' => Lang::get('formular.name')));}}</p>
+<p class="form-paragraph">{{ Form::text('lp_name', '',array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control datepicker, form-datepicker'));}}</p>
 
      <div style="height: 30dpi">
           @if($errors->first('lp_name'))
@@ -117,9 +120,10 @@ $(document).ready(function() {
 
 
 
-<p class="form-paragraph">{{ Form::text('lp_street', '',array('placeholder' => Lang::get('formular.street')));}}
-
-{{ Form::text('lp_number', '',array('placeholder' => Lang::get('formular.number')));}}</p>
+<p class="form-paragraph form-inline">
+        {{ Form::text('lp_street', '',array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
+        {{ Form::text('lp_number', '',array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}
+</p>
 
 
      <div style="height: 30dpi">
@@ -283,7 +287,7 @@ $(document).ready(function() {
            @endif
       </div>
 
-<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control datepicker, form-datepicker','placeholder'));}}</p>
+<p class="form-paragraph">{{ Form::text('verpackung', '',array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control datepicker, form-datepicker'));}}</p>
 
      <div style="height: 30dpi">
           @if($errors->first('verpackung'))
