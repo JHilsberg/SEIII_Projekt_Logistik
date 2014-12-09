@@ -22,14 +22,23 @@ class CreateOrdersTable extends Migration {
             $table->date('lieferdatum',10);
             $table->date('minlieferzeit',10);
             $table->date('maxlieferzeit',10);
-            $table->string('transportmittel',50);
+
+            $table->integer('anzahlcontainer',50);
             $table->string('container',50);
             $table->string('warenbeschreibung',250);
             $table->boolean('gefahrengut');
             $table->string('warenverpackung',250);
             $table->float('warengewicht',20);
             $table->string('bemerkung',250);
+            $table->boolean('lkw');
+            $table->boolean('schiff');
+            $table->boolean('zug');
+            $table->boolean('pkw');
+            $table->boolean('flugzeug');
+            $table->boolean('egal');
+
             $table->timestamp('abegesendet');
+
 
         });
     }
