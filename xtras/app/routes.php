@@ -22,6 +22,7 @@ Route::get('home', function(){
 
 Route::post('transportauftrag', array('uses' => 'FormController@start'));
 
+
 Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
 {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
