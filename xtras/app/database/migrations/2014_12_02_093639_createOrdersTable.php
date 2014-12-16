@@ -74,7 +74,7 @@ class CreateOrdersTable extends Migration {
             $table->boolean('flugzeug')->default(0);
             $table->boolean('egal')->default(0);
             $table->timestamp('abgesendet');
-
+            $table->timestamp('abgespeichert');
 
         });
     }

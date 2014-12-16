@@ -161,7 +161,7 @@ class FormController  extends BaseController
         $order->lieferadresse = $lieferadresse->id;
 
         $order->abgesendet = \Carbon\Carbon::now();
-
+        $order->abgespeichert = \Carbon\Carbon::now();
 
         $order->save();
 
@@ -301,6 +301,7 @@ class FormController  extends BaseController
         // speichern ohne zeitstempel
         // $order->abgesendet = \Carbon\Carbon::now();
 
+        $order->abgespeichert = \Carbon\Carbon::now();
 
         $order->save();
 
