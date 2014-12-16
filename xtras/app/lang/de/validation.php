@@ -144,11 +144,10 @@ return array(
             'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
             //!'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
         ),
-
         'Verkehrsmittel' => array(
-            $checkboxVerkehrsmittel.' == 1' => 'Es muss mindestens ein Feld ausgewählt sein.',
+            $checkboxVerkehrsmittel.' == 1'
+            => 'Es muss mindestens ein Feld ausgewählt sein.',
         ),
-
         'behaelter' => array(
             $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
             => 'Sie haben einen falschen Behälter ausgewählt.',
@@ -156,8 +155,6 @@ return array(
 
         'anzahlBehaelter' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'numeric' => 'Anzahl ist ungültig.',
-            'min' => 'Die Anzahl der Behälter muss mindestens 1 sein.',
         ),
         'beschreibung' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
@@ -167,13 +164,11 @@ return array(
         'gewicht' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'numeric' => 'Gewicht ist ungültig.',
-            'min' => 'Das Gewicht der Ware muss angegeben werden.',
         ),
-        /**
         'einheit' => array(
             $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen'
             => 'Sie haben eine falsche Einheit ausgewählt.',
-        ),*/
+        ),
         'verpackung' => array(
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
             'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',

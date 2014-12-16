@@ -71,7 +71,9 @@ class FormController  extends BaseController
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {
             return Redirect::to('secure')
+                ->withInput()
                 ->withErrors($validator);// send back all errors to the form
+
         } else {
             //persist
 
