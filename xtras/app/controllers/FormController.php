@@ -75,13 +75,15 @@ class FormController  extends BaseController
         } else {
             //persist
 
-          //  return Redirect::to('secure')
-            //    ->with('saved', 'saved');
+
 
             $order = new Order();
-            $order->lieferdatum=Input::get('abholtermin');
-            $order->minlieferzeit=Input::get('minLiefertermin');
-            $order->maxlieferzeit=Input::get('maxLiefertermin');
+
+            $order->lieferdatum=date("Y-m-d", strtotime(Input::get('abholtermin')));
+            $order->minlieferzeit=date("Y-m-d", strtotime(Input::get('minLiefertermin')));
+            $order->maxlieferzeit=date("Y-m-d", strtotime(Input::get('maxLiefertermin')));
+
+
             $order->anzahltransportbehaelter=Input::get('anzahlBehaelter');
             $order->transportbehaelter=Input::get('behaelter');
             $order->warenbeschreibung=Input::get('beschreibung');
@@ -144,6 +146,8 @@ class FormController  extends BaseController
 
             $order->save();
 
+              return Redirect::to('secure')
+                ->with('saved', 'saved');
 
         }
     }

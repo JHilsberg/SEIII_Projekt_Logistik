@@ -14,8 +14,12 @@
     {{ HTML::script('js/bootbox.min.js') }}
     {{ HTML::script('js/formular.js') }}
     {{ HTML::script('js/bootstrap-datepicker.js') }}
+    {{ HTML::script('js/dataBaseOperations.js') }}
+
 </head>
-<body>
+<body onload="@if(App::getLocale() == 'de' && Session::has('saved'))openDataBaseSuccessDE()
+                      @elseif(App::getLocale() == 'en' && Session::has('saved'))openDataBaseSuccessEN()@endif">
+
 <nav role="navigation" class="navbar navbar-default">
 
     <!-- Brand and toggle get grouped for better mobile display -->
