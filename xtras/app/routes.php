@@ -20,7 +20,7 @@ Route::get('home', function(){
     return View::make('home');
 });
 
-Route::post('transportauftrag', array('uses' => 'FormController@validate'));
+Route::post('transportauftrag', array('uses' => 'FormController@start'));
 
 Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
 {
