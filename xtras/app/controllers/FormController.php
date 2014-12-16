@@ -99,17 +99,17 @@ class FormController  extends BaseController
             //transportmittel:
 
             if(Input::has('schiff'))
-            $order->schiff=Input::get('schiff');
+            $order->schiff=1;
             if(Input::has('lkw'))
-            $order->lkw=Input::get('lkw');
+            $order->lkw=1;
             if(Input::has('zug'))
-            $order->zug=Input::get('zug');
+            $order->zug=1;
             if(Input::has('pkw'))
-            $order->pkw=Input::get('pkw');
+            $order->pkw=1;
             if(Input::has('flugzeug'))
-            $order->flugzeug=Input::get('flugzeug');
+            $order->flugzeug=1;
             if(Input::has('egal'))
-            $order->egal=Input::get('egal');
+            $order->egal=1;
 
             //userid
             $order->userid=Auth::id();
