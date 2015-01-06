@@ -114,7 +114,7 @@ $(document).ready(function() {
 <td>{{$order->lieferadresse()->first()->firma}}</td>
 <td>{{$order->lieferadresse()->first()->ort}}</td>
 <td>{{$order->warenbeschreibung}}</td>
-<td>{{$order->abgespeichert}}</td>
+<td>{{date("d.m.y h:m", strtotime($order->abgespeichert))}}</td>
 <td>Buttons</td>
 </tr>
 @endforeach
