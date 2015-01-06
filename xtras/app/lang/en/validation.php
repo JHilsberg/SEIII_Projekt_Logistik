@@ -2,16 +2,16 @@
 
 return array(
 
-	/*
-	|--------------------------------------------------------------------------
-	| Validation Language Lines
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines contain the default error messages used by
-	| the validator class. Some of these rules have multiple versions such
-	| as the size rules. Feel free to tweak each of these messages here.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines contain the default error messages used by
+    | the validator class. Some of these rules have multiple versions such
+    | as the size rules. Feel free to tweak each of these messages here.
+    |
+    */
 
 	"accepted"             => "The :attribute must be accepted.",
 	"active_url"           => "The :attribute is not a valid URL.",
@@ -128,23 +128,23 @@ return array(
             'required' => 'This mandatory field can not be empty.',
             'alpha_dash' => 'You have entered invalid characters.',
         ),
-        /**
+
         'abholtermin' => array(
-        'required' => 'This mandatory field can not be empty.',
-        'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-        //!'before:'.$currentDate::format(mm/dd/yyyy) => 'Abholtermin muss in der Zukunft liegen.',
+            'required' => 'This mandatory field can not be empty.',
+            'date_format' => 'Your input has the wrong format.',
+            'after' => 'The pick-up appointment must be in the future.',
         ),
         'minLiefertermin' => array(
-        'required' => 'This mandatory field can not be empty.',
-        'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-        //!'before:'.$abholtermin => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
+            'required' => 'This mandatory field can not be empty.',
+            'date_format' => 'Your input has the wrong format.',
+            'after' => 'The earliest delivery appointment must occur after the pick-up appointment.',
         ),
         'maxLiefertermin' => array(
-        'required' => 'This mandatory field can not be empty.',
-        'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-        //!'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
+            'required' => 'This mandatory field can not be empty.',
+            'date_format' => 'Your input has the wrong format.',
+            'after' => 'The latest delivery appointment must occur after the earliest delivery appointment.',
         ),
-
+        /**
         'Verkehrsmittel' => array(
         $checkboxVerkehrsmittel.' == 1' => 'Es muss mindestens ein Feld ausgewählt sein.',
         ),
@@ -199,6 +199,7 @@ return array(
     |
     */
 
-	'attributes' => array(),
+    'attributes' => array(),
 
 );
+

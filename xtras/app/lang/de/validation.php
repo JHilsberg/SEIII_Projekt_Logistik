@@ -2,16 +2,16 @@
 
 return array(
 
-	/*
-	|--------------------------------------------------------------------------
-	| Validation Language Lines
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines contain the default error messages used by
-	| the validator class. Some of these rules have multiple versions such
-	| as the size rules. Feel free to tweak each of these messages here.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines contain the default error messages used by
+    | the validator class. Some of these rules have multiple versions such
+    | as the size rules. Feel free to tweak each of these messages here.
+    |
+    */
 
 	"accepted"             => "The :attribute must be accepted.",
 	"active_url"           => "The :attribute is not a valid URL.",
@@ -128,33 +128,33 @@ return array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
         ),
-        /**
+
         'abholtermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-            //!'before:'.$currentDate::format(mm/dd/yyyy) => 'Abholtermin muss in der Zukunft liegen.',
+            'date_format' => 'Ihre Eingabe hat das falsche Format.',
+            'after' => 'Abholtermin muss in der Zukunft liegen.',
         ),
         'minLiefertermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-             //!'before:'.$abholtermin => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
-         ),
+            'date_format' => 'Ihre Eingabe hat das falsche Format.',
+            'after' => 'Der früheste Liefertermin muss nach dem Abholtermin liegen.',
+        ),
         'maxLiefertermin' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'date_format:mm/dd/yyyy' => 'Ihre Eingabe hat das falsche Format.',
-            //!'before:'.$minLiefertermin => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
+            'date_format' => 'Ihre Eingabe hat das falsche Format.',
+            'after' => 'Der späteste Liefertermin muss nach dem frühesten Liefertermin liegen.',
         ),
-        'Verkehrsmittel' => array(
-            $checkboxVerkehrsmittel.' == 1'
-            => 'Es muss mindestens ein Feld ausgewählt sein.',
-        ),
-        'behaelter' => array(
-            $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
-            => 'Sie haben einen falschen Behälter ausgewählt.',
-        ),'*/
 
+        /**
+        'behaelter' => array(
+        $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
+        => 'Sie haben einen falschen Behälter ausgewählt.',
+        ),'*/
+        
         'anzahlBehaelter' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
+            'numeric' => 'Anzahl ist ungültig.',
+            'min' => 'Die Anzahl der Behälter muss mindestens 1 sein.',
         ),
         'beschreibung' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
@@ -164,11 +164,13 @@ return array(
         'gewicht' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'numeric' => 'Gewicht ist ungültig.',
+            'min' => 'Das Gewicht der Ware muss angegeben werden.',
         ),
+        /**
         'einheit' => array(
-            $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen'
-            => 'Sie haben eine falsche Einheit ausgewählt.',
-        ),
+        $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen'
+        => 'Sie haben eine falsche Einheit ausgewählt.',
+        ),*/
         'verpackung' => array(
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
             'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
@@ -182,18 +184,18 @@ return array(
         ),
     ),
 
-	/*
-	|--------------------------------------------------------------------------
-	| Custom Validation Attributes
-	|--------------------------------------------------------------------------
-	|
-	| The following language lines are used to swap attribute place-holders
-	| with something more reader friendly such as E-Mail Address instead
-	| of "email". This simply helps us make messages a little cleaner.
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Attributes
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used to swap attribute place-holders
+    | with something more reader friendly such as E-Mail Address instead
+    | of "email". This simply helps us make messages a little cleaner.
+    |
+    */
 
-	'attributes' => array(
+    'attributes' => array(
         'email' => 'E-Mail',
         'password' => 'Passwort'
     ),
