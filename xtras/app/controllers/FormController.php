@@ -40,46 +40,34 @@ class FormController  extends BaseController
         $rules = array(
 
 
-            'lp_name' => 'required|alpha_spaces',
-            'lp_street' => 'required|alpha_spaces',
-            'lp_number' => 'required|alpha_num',
+            'lp_name' => 'required|alpha_spaces|between:0,32',
+            'lp_street' => 'required|alpha_spaces|between:0,64',
+            'lp_number' => 'required|alpha_num|between:0,5',
             'lp_plz' => 'required|numeric|digits:5',
-            'lp_city' => 'required|alpha_spaces',
+            'lp_city' => 'required|alpha_spaces|between:0,64',
 
-            'dp_name' => 'required|alpha_spaces',
-            'dp_street' => 'required|alpha_spaces',
-            'dp_number' => 'required|alpha_num',
+            'dp_name' => 'required|alpha_spaces|between:0,32',
+            'dp_street' => 'required|alpha_spaces|between:0,64',
+            'dp_number' => 'required|alpha_num|between:0,5',
             'dp_plz' => 'required|numeric|digits:5',
-            'dp_city' => 'required|alpha_spaces',
+            'dp_city' => 'required|alpha_spaces|between:0,64',
 
 
             'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
             'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
             'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
 
-            // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
-
-            /**'behaelter' => $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen',*/
-
-
-            'anzahlBehaelter' => 'required|numeric|min:1',
-
-            'beschreibung' => 'required|alpha_spaces',
-
+            'anzahlBehaelter' => 'required|numeric|digits_between:0,11',
+            'beschreibung' => 'required|alpha_spaces|between:0,250',
             'gewicht' => 'required|numeric|min:1',
-
-            /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
-
-            'verpackung' => 'alpha_spaces|digits_between:0,250',
-
-            'bemerkung' => 'alpha_spaces|digits_between:0,250',
-
+            'verpackung' => 'alpha_spaces|between:0,250',
+            'bemerkung' => 'alpha_spaces|between:0,250',
             'transportmittel' => 'required'
 
         );
         Validator::extend('alpha_spaces', function($attribute, $value)
         {
-            return preg_match('/^[\pL\s-()_]+$/u', $value);
+            return preg_match('/^[\pL\s-()_.,]+$/u', $value);
         });
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
@@ -187,43 +175,37 @@ class FormController  extends BaseController
         $rules = array(
 
 
-            'lp_name' => 'alpha_dash',
-            'lp_street' => 'alpha_dash',
-            'lp_number' => 'alpha_num',
-            'lp_plz' => 'numeric|digits:5',
-            'lp_city' => 'alpha_dash',
+            'lp_name' => 'required|alpha_spaces|between:0,32',
+            'lp_street' => 'required|alpha_spaces|between:0,64',
+            'lp_number' => 'required|alpha_num|between:0,5',
+            'lp_plz' => 'required|numeric|digits:5',
+            'lp_city' => 'required|alpha_spaces|between:0,64',
 
-            'dp_name' => 'alpha_dash',
-            'dp_street' => 'alpha_dash',
-            'dp_number' => 'alpha_num',
-            'dp_plz' => 'numeric|digits:5',
-            'dp_city' => 'alpha_dash',
+            'dp_name' => 'required|alpha_spaces|between:0,32',
+            'dp_street' => 'required|alpha_spaces|between:0,64',
+            'dp_number' => 'required|alpha_num|between:0,5',
+            'dp_plz' => 'required|numeric|digits:5',
+            'dp_city' => 'required|alpha_spaces|between:0,64',
 
 
             'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
             'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
             'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
 
-            // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
+            'anzahlBehaelter' => 'required|numeric|digits_between:0,11',
+            'beschreibung' => 'required|alpha_spaces|between:0,250',
+            'gewicht' => 'required|numeric|min:1',
+            'verpackung' => 'alpha_spaces|between:0,250',
+            'bemerkung' => 'alpha_spaces|between:0,250',
+            'transportmittel' => 'required'
 
-            /**'behaelter' => $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen',*/
-
-
-            'anzahlBehaelter' => 'numeric|min:1',
-
-            'beschreibung' => 'alpha_dash|digits_between:0,250',
-
-            'gewicht' => 'numeric|min:1',
-
-            /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
-
-            'verpackung' => 'alpha_dash|digits_between:0,250',
-
-            'bemerkung' => 'alpha_dash|digits_between:0,250'
 
 
         );
-
+        Validator::extend('alpha_spaces', function($attribute, $value)
+        {
+            return preg_match('/^[\pL\s-()_.,]+$/u', $value);
+        });
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
@@ -262,19 +244,18 @@ class FormController  extends BaseController
         $order->warengewicht = Input::get('gewicht');
         $order->bemerkung = Input::get('bemerkung');
 
-        //transportmittel:
-
-        if (Input::has('schiff'))
+        $transportmittel =  Input::get('transportmittel', array());
+        if(in_array('schiff', $transportmittel))
             $order->schiff = 1;
-        if (Input::has('lkw'))
+        if(in_array('lkw', $transportmittel))
             $order->lkw = 1;
-        if (Input::has('zug'))
+        if(in_array('zug', $transportmittel))
             $order->zug = 1;
-        if (Input::has('pkw'))
+        if(in_array('pkw', $transportmittel))
             $order->pkw = 1;
-        if (Input::has('flugzeug'))
+        if(in_array('flugzeug', $transportmittel))
             $order->flugzeug = 1;
-        if (Input::has('egal'))
+        if(in_array('egal', $transportmittel))
             $order->egal = 1;
 
         //userid
