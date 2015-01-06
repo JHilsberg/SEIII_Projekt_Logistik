@@ -64,7 +64,7 @@ class FormController  extends BaseController
 
             'anzahlBehaelter' => 'required|numeric|min:1',
 
-            'beschreibung' => 'required|alpha_spaces|digits_between:0,250',
+            'beschreibung' => 'required|alpha_spaces',
 
             'gewicht' => 'required|numeric|min:1',
 
@@ -120,19 +120,18 @@ class FormController  extends BaseController
         $order->warengewicht = Input::get('gewicht');
         $order->bemerkung = Input::get('bemerkung');
 
-        //transportmittel:
-
-        if (Input::has('schiff'))
+        $transportmittel =  Input::get('transportmittel', array());
+        if(in_array('schiff', $transportmittel))
             $order->schiff = 1;
-        if (Input::has('lkw'))
+        if(in_array('lkw', $transportmittel))
             $order->lkw = 1;
-        if (Input::has('zug'))
+        if(in_array('zug', $transportmittel))
             $order->zug = 1;
-        if (Input::has('pkw'))
+        if(in_array('pkw', $transportmittel))
             $order->pkw = 1;
-        if (Input::has('flugzeug'))
+        if(in_array('flugzeug', $transportmittel))
             $order->flugzeug = 1;
-        if (Input::has('egal'))
+        if(in_array('egal', $transportmittel))
             $order->egal = 1;
 
         //userid

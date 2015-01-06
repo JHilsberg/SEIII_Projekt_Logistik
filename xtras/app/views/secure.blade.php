@@ -240,7 +240,7 @@
 <div class="col-md-4">
 <h2>{{Lang::get('formular.means_transport')}}</h2>
 <?php $transportmittel =  Input::old('transportmittel[]', array());?>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','schiff', Input::old('schiff'));}} {{Lang::get('formular.ship')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','schiff', in_array('schiff', $transportmittel));}} {{Lang::get('formular.ship')}}</p>
 <p class="form-paragraph">{{ Form::checkbox('transportmittel[]','lkw', in_array('lkw', $transportmittel));}} {{Lang::get('formular.lorry')}}</p>
 <p class="form-paragraph">{{ Form::checkbox('transportmittel[]','zug', in_array('zug', $transportmittel));}} {{Lang::get('formular.train')}}</p>
 <p class="form-paragraph">{{ Form::checkbox('transportmittel[]','pkw', in_array('pkw', $transportmittel));}} {{Lang::get('formular.car')}}</p>
