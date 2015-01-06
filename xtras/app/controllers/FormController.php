@@ -65,10 +65,12 @@ class FormController  extends BaseController
             'transportmittel' => 'required'
 
         );
+        //Sonderzeichen für Beschreibung, Verpackung und Bemerkung
         Validator::extend('alpha_spaces', function($attribute, $value)
         {
             return preg_match('/^[\pL\s\w-+&?%@€:()_.,0-9]+$/u', $value);
         });
+        //Sonderzeichen für Verlade- und Zielort
         Validator::extend('alpha_spaces_simple', function($attribute, $value)
         {
             return preg_match('/^[\pL\s-()_.,]+$/u', $value);
