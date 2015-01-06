@@ -13,5 +13,6 @@ return array(
     'startenterprise'               => 'Start Enterprise',
     'targetenterprise' => 'Delivery Enterprise',
     'actions' =>'Actions',
-    'timestamp' => 'created at'
+    'timestamp' => 'created at',
+    'edit' => 'edit'
 );

@@ -12,5 +12,6 @@ return array(
     'startenterprise'               => 'Abholfirma',
     'targetenterprise' => 'Zielfirma',
     'actions' =>'Aktionen',
-    'timestamp' => 'erstellt am'
+    'timestamp' => 'erstellt am',
+    'edit' => 'bearbeiten'
 );

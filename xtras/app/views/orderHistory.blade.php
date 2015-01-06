@@ -115,7 +115,11 @@ $(document).ready(function() {
 <td>{{$order->lieferadresse()->first()->ort}}</td>
 <td>{{$order->warenbeschreibung}}</td>
 <td>{{date("d.m.y h:m", strtotime($order->abgespeichert))}}</td>
-<td>Buttons</td>
+<td>
+{{ Form::open(['route' => ['editOrder', $order->id]]) }}
+{{ Form::submit(Lang::get('orderhistory.edit'), array('class' => 'btn btn-lg btn-primary btn-block', 'name' => 'test')) }}
+{{ Form::close() }}
+</td>
 </tr>
 @endforeach
 </tbody>

@@ -35,9 +35,21 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
     Route::get('myAccount', array('before' => 'auth', function(){
         return View::make('myAccount');
     }));
+
+    Route::post('editOrder/{id}',array('before' => 'auth','as' => 'editOrder', function($id) {
+
+    $order = Order::where('id', '=', $id);
+
+        return View::make('editOrder')
+           ->with('order', $order);
+    }));
+
+
 });
 Route::post('login', array('uses' => 'SessionController@doLogin'));
 
 Route::post('account', array('uses' => 'accountViewController@validate'));
 
 Route::post('transportauftrag', array('uses' => 'FormController@start'));
+
+Route::post('handlePDF',array('uses' => 'PDFController@start'));
