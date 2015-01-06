@@ -14,5 +14,7 @@ return array(
     'targetenterprise' => 'Delivery Enterprise',
     'actions' =>'Actions',
     'timestamp' => 'created at',
-    'edit' => 'edit'
+    'edit' => 'edit',
+    'save' => 'save PDF',
+    'show' => 'show PDF'
 );
