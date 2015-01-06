@@ -33,8 +33,8 @@ class FormController  extends BaseController
 
 
         $yesterday = date('m/d/Y', time() - 86400);
-        $abholtermin= date('m/d/Y', time(Input::get('abholtermin')) - 86400);
-        $minLiefertermin= date('m/d/Y', time(Input::get('minLiefertermin')) - 86400);
+        $abholtermin = date('m/d/Y', strtotime(Input::get('abholtermin')) - 86400);
+        $minLiefertermin = date('m/d/Y', strtotime(Input::get('minLiefertermin')) - 86400);
 
         // validate the info, create rules for the inputs
         $rules = array(
@@ -57,7 +57,7 @@ class FormController  extends BaseController
             'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
             'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
 
-            // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
+            'transportmittel' => 'required',
 
             /**'behaelter' => $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen',*/
 
@@ -74,7 +74,7 @@ class FormController  extends BaseController
 
             'bemerkung' => 'alpha_spaces|digits_between:0,250',
 
-            'transportmittel' => 'required'
+
 
         );
         Validator::extend('alpha_spaces', function($attribute, $value)
@@ -181,8 +181,8 @@ class FormController  extends BaseController
 
 
         $yesterday = date('m/d/Y', time() - 86400);
-        $abholtermin= date('m/d/Y', time(Input::get('abholtermin')) - 86400);
-        $minLiefertermin= date('m/d/Y', time(Input::get('minLiefertermin')) - 86400);
+        $abholtermin= date('m/d/Y', strtotime(Input::get('abholtermin')) - 86400);
+        $minLiefertermin= date('m/d/Y', strtotime(Input::get('minLiefertermin')) - 86400);
 
         $rules = array(
 

@@ -198,8 +198,6 @@
                </div>
            @endif
 
-
-
 <p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.min_delivery'), 'id' => 'calendar2')) }}
 </p>
 
