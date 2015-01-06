@@ -35,17 +35,17 @@ class FormController  extends BaseController
         $rules = array(
 
 
-            'lp_name' => 'required|alpha_dash',
-            'lp_street' => 'required|alpha_dash',
+            'lp_name' => 'required|alpha_spaces',
+            'lp_street' => 'required|alpha_spaces',
             'lp_number' => 'required|alpha_num',
             'lp_plz' => 'required|numeric|digits:5',
-            'lp_city' => 'required|alpha_dash',
+            'lp_city' => 'required|alpha_spaces',
 
-            'dp_name' => 'required|alpha_dash',
-            'dp_street' => 'required|alpha_dash',
+            'dp_name' => 'required|alpha_spaces',
+            'dp_street' => 'required|alpha_spaces',
             'dp_number' => 'required|alpha_num',
             'dp_plz' => 'required|numeric|digits:5',
-            'dp_city' => 'required|alpha_dash',
+            'dp_city' => 'required|alpha_spaces',
 
 
             // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
@@ -59,20 +59,23 @@ class FormController  extends BaseController
 
             'anzahlBehaelter' => 'required|numeric|min:1',
 
-            'beschreibung' => 'required|alpha_dash|digits_between:0,250',
+            'beschreibung' => 'required|alpha_spaces|digits_between:0,250',
 
             'gewicht' => 'required|numeric|min:1',
 
             /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
 
-            'verpackung' => 'alpha_dash|digits_between:0,250',
+            'verpackung' => 'alpha_spaces|digits_between:0,250',
 
-            'bemerkung' => 'alpha_dash|digits_between:0,250',
+            'bemerkung' => 'alpha_spaces|digits_between:0,250',
 
             'transportmittel' => 'required'
 
         );
-
+        Validator::extend('alpha_spaces', function($attribute, $value)
+        {
+            return preg_match('/^[\pL\s-()_]+$/u', $value);
+        });
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
