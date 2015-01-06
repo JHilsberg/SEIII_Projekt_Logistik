@@ -9,4 +9,9 @@
 class Adress extends Eloquent{
     public $table = 'addresses';
     public $timestamps = false;
+
+    public function order()
+    {
+        return $this->belongsTo('Order', 'id', 'abholadresse');
+    }
 }

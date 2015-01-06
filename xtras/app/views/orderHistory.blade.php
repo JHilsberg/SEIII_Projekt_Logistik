@@ -94,5 +94,31 @@ $(document).ready(function() {
 </nav>
 
 
+<table class="table">
+   <thead>
+        <tr>
+          <th data-field="beschreibung">{{Lang::get('orderhistory.startenterprise')}}</th>
+          <th data-field="beschreibung">{{Lang::get('orderhistory.loading_place')}}</th>
+          <th data-field="beschreibung">{{Lang::get('orderhistory.targetenterprise')}}</th>
+          <th data-field="beschreibung">{{Lang::get('orderhistory.deliveryPlace')}}</th>
+          <th data-field="beschreibung">{{Lang::get('orderhistory.description_goods')}}</th>
+        <th data-field="abgespeichert">{{Lang::get('orderhistory.timestamp')}}</th>
+        <th data-field="abgespeichert">{{Lang::get('orderhistory.actions')}}</th>
+        </tr>
+    </thead>
+<tbody>
+@foreach ($orders as $order)
+<tr>
+<td>{{$order->abholadresse()->first()->firma}}</td>
+<td>{{$order->abholadresse()->first()->ort}}</td>
+<td>{{$order->lieferadresse()->first()->firma}}</td>
+<td>{{$order->lieferadresse()->first()->ort}}</td>
+<td>{{$order->warenbeschreibung}}</td>
+<td>{{$order->abgespeichert}}</td>
+<td>Buttons</td>
+</tr>
+@endforeach
+</tbody>
+</table>
 </body>
 </html>
