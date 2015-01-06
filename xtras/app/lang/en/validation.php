@@ -182,6 +182,9 @@ return array(
             'alpha_dash' => 'You have entered invalid characters.',
             'digits_between' => 'You have exceeded the maximum character length for this field.',
         ),
+        'transportmittel' => array(
+            'required' => 'You must tick at least one of this options.',
+        ),
     ),
 
 

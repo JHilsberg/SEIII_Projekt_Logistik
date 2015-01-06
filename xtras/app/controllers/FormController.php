@@ -67,8 +67,9 @@ class FormController  extends BaseController
 
             'verpackung' => 'alpha_dash|digits_between:0,250',
 
-            'bemerkung' => 'alpha_dash|digits_between:0,250'
+            'bemerkung' => 'alpha_dash|digits_between:0,250',
 
+            'transportmittel' => 'required'
 
         );
 

@@ -177,6 +177,9 @@ return array(
             'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
             'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
+        'transportmittel' => array(
+            'required' => 'Sie müssen mindestens ein Feld angekreuzt haben.',
+        ),
     ),
 
 	/*

@@ -216,12 +216,18 @@
 
 <div class="col-md-4">
 <h2>{{Lang::get('formular.means_transport')}}</h2>
-<p class="form-paragraph">{{ Form::checkbox('schiff', Input::old('schiff'));}} {{Lang::get('formular.ship')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('lkw', Input::old('lkw'));}} {{Lang::get('formular.lorry')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('zug', Input::old('zug'));}} {{Lang::get('formular.train')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('pkw', Input::old('pkw'));}} {{Lang::get('formular.car')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('flugzeug', Input::old('flugzeug'));}} {{Lang::get('formular.airplane')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('egal', Input::old('egal'));}} {{Lang::get('formular.similar')}}</p>
+<?php $transportmittel =  Input::old('transportmittel[]', array());?>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','schiff', Input::old('schiff'));}} {{Lang::get('formular.ship')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','lkw', in_array('lkw', $transportmittel));}} {{Lang::get('formular.lorry')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','zug', in_array('zug', $transportmittel));}} {{Lang::get('formular.train')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','pkw', in_array('pkw', $transportmittel));}} {{Lang::get('formular.car')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','flugzeug', in_array('flugzeug', $transportmittel));}} {{Lang::get('formular.airplane')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','egal', in_array('egal', $transportmittel));}} {{Lang::get('formular.similar')}}</p>
+          @if($errors->first('transportmittel'))
+              <div class="alert alert-info">
+                  {{ $errors->first('transportmittel') }}
+               </div>
+           @endif
 </div>
 </div>
 
