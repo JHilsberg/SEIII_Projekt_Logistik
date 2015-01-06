@@ -33,8 +33,8 @@ class FormController  extends BaseController
 
 
         $yesterday = date('m/d/Y', time() - 86400);
-        $abholtermin= date('m/d/Y', time(Input::get('abholtermin')) - 86400);
-        $minLiefertermin= date('m/d/Y', time(Input::get('minLiefertermin')) - 86400);
+        $abholtermin = date('m/d/Y', strtotime(Input::get('abholtermin')) - 86400);
+        $minLiefertermin = date('m/d/Y', strtotime(Input::get('minLiefertermin')) - 86400);
 
         // validate the info, create rules for the inputs
         $rules = array(
@@ -169,8 +169,8 @@ class FormController  extends BaseController
 
 
         $yesterday = date('m/d/Y', time() - 86400);
-        $abholtermin= date('m/d/Y', time(Input::get('abholtermin')) - 86400);
-        $minLiefertermin= date('m/d/Y', time(Input::get('minLiefertermin')) - 86400);
+        $abholtermin= date('m/d/Y', strtotime(Input::get('abholtermin')) - 86400);
+        $minLiefertermin= date('m/d/Y', strtotime(Input::get('minLiefertermin')) - 86400);
 
         $rules = array(
 

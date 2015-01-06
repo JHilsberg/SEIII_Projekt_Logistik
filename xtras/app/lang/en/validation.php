@@ -145,10 +145,6 @@ return array(
             'after' => 'The latest delivery appointment must occur after the earliest delivery appointment.',
         ),
         /**
-        'Verkehrsmittel' => array(
-        $checkboxVerkehrsmittel.' == 1' => 'Es muss mindestens ein Feld ausgewählt sein.',
-        ),
-
         'behaelter' => array(
         $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen'
         => 'Sie haben einen falschen Behälter ausgewählt.',
