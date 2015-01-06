@@ -16,13 +16,6 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('home', function(){
-    return View::make('home');
-});
-
-Route::post('transportauftrag', array('uses' => 'FormController@start'));
-
-
 Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
 {
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
@@ -43,6 +36,8 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
         return View::make('myAccount');
     }));
 });
-
-
 Route::post('login', array('uses' => 'SessionController@doLogin'));
+
+Route::post('account', array('uses' => 'accountViewController@validate'));
+
+Route::post('transportauftrag', array('uses' => 'FormController@start'));

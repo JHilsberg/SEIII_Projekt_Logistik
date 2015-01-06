@@ -10,4 +10,6 @@ composer.lock
 /vendor/barryvdh
 _ide_helper.php
 composer.json
+/vendor/*
+/vendor
 Thumbs.db

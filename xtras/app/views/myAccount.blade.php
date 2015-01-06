@@ -1,42 +1,30 @@
 <!doctype html>
 <html>
+
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.00">
     <!-- CSS are placed here -->
     {{ HTML::style('css/bootstrap.css') }}
     {{ HTML::style('css/bootstrap-theme.css') }}
-    {{ HTML::style('css/formular.css') }}
+    {{ HTML::style('css/account.css') }}
     {{ HTML::style('css/datepicker.css') }}
     {{ HTML::style('css/datepicker3.css') }}
     <!-- Scripts are placed here -->
     {{ HTML::script('js/jquery-2.1.1.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/bootbox.min.js') }}
-    {{ HTML::script('js/bootstrap-datepicker.js') }}
-
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#calendar').datepicker({
-    });
-} );
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#calendar2').datepicker({
-    });
-} );
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#calendar3').datepicker({
-    });
-} );
-</script>
-
 </head>
+<script>
+function enableTexts(){
+  var textFields = document.getElementsByClassName('form-control');
+
+//textFields.setAttribute("disabled",false);
+   for(var i = 0; i < textFields.length; i++){
+    textFields[i].removeAttribute("disabled");
+  }
+}
+</script>
 <body>
 <nav role="navigation" class="navbar navbar-default">
 
@@ -63,6 +51,7 @@ $(document).ready(function() {
     </div>
 
     <!-- Collection of nav links and other content for toggling -->
+
 
     <div id="navbarCollapse" class="collapse navbar-collapse">
 
@@ -92,6 +81,93 @@ $(document).ready(function() {
 
     </div>
 </nav>
+
+@if($errors->has())
+    <div class="alert alert-info">
+        @foreach($errors->all() as $error)
+        <p>{{ $error }}</p>
+        @endforeach
+    </div>
+@endif
+
+<form class="form-vertical" role="form" method="POST" action="{{Url::to('account')}}">
+
+    <div class="container">
+        <div class="form-group">
+            <div class="col-md-4">
+            <p class="form-paragraph left">
+                {{ Form::label('email', Lang::get('account.email'), array('class' => 'account-labels')); }}
+            </p>
+            <p class="form-paragraph left">
+                {{ Form::label('name', Lang::get('account.name'), array('class' => 'account-labels')); }}
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('surname', Lang::get('account.surname'), array('class' => 'account-labels')); }}
+
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('company', Lang::get('account.firma'), array('class' => 'account-labels')); }}
+
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('street', Lang::get('account.strasse'), array('class' => 'account-labels')); }}
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('housenumber', Lang::get('account.hausnummer'), array('class' => 'account-labels')); }}
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('city', Lang::get('account.ort'), array('class' => 'account-labels')); }}
+
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('pincode', Lang::get('account.plz'), array('class' => 'account-labels')); }}
+            </p>
+            <p class="form-paragraph left">
+            {{ Form::label('country', Lang::get('account.land'));}}
+            </p>
+            <p class="form-paragraph">
+             {{ Form::button(Lang::get('account.edit'), array('class' => 'btn btn-lg btn-primary btn-block btn-account', 'onclick' => 'enableTexts()', 'id' => 'saveButton')); }}
+            </p>
+            </div>
+
+            <div class="col-md-4">
+            <p class="form-paragraph">
+                {{ Form::text('email-text',Auth::user()->email, array('disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+                {{ Form::text('name-text',Auth::user()->nachname, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('surname-text',Auth::user()->vorname, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('company-text',Auth::user()->firma, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('street-text',Auth::user()->strasse, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('housenumber-text',Auth::user()->hausnummer, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('city-text',Auth::user()->ort, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('pincode-text',Auth::user()->postleitzahl, array('disabled' => 'disabled', 'class' => 'form-control')); }}
+            </p>
+            <p class="form-paragraph">
+            {{ Form::text('country-text',Auth::user()->land, array('disabled' => 'disabled', 'class' => 'form-control'));}}
+            </p>
+            <div class="form-group">
+            <p class="form-paragraph">
+            {{ Form::submit(Lang::get('account.save'), array('class' => 'btn btn-lg btn-primary btn-block btn-account btn-success')); }}
+           </p>
+           </div>
+            </div>
+        </div>
+    </div>
+
+</form>
 
 
 </body>
