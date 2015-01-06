@@ -25,11 +25,16 @@ class FormController  extends BaseController
     public function validateSubmit()
     {
 
+        date_default_timezone_set('Europe/Berlin');
 
-        //$abholtermin= $_POST["abholtermin"];
-        //$minLiefertermin= $_POST["minLiefertermin"];
-        //$checkboxVerkehrsmittel= !is_null(Input::get('schiff')) || !is_null(Input::get('lkw')) || !is_null(Input::get('zug')) ||
-        //   !is_null(Input::get('pkw')) || !is_null(Input::get('flugzeug')) || !is_null(Input::get('egal'));
+        //see what timezone the server is currently in via:
+        //$timezone = date_default_timezone_get();
+        //echo "The current server timezone is: " . $timezone;
+
+
+        $yesterday = date('m/d/Y', time() - 86400);
+        $abholtermin= date('m/d/Y', time(Input::get('abholtermin')) - 86400);
+        $minLiefertermin= date('m/d/Y', time(Input::get('minLiefertermin')) - 86400);
 
         // validate the info, create rules for the inputs
         $rules = array(
@@ -48,9 +53,9 @@ class FormController  extends BaseController
             'dp_city' => 'required|alpha_dash',
 
 
-            // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
-            // 'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
-            // 'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
+            'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
+            'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
+            'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
 
             // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
 
@@ -76,12 +81,6 @@ class FormController  extends BaseController
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
-        /** $validator -> sometimes('abholtermin', 'liegtInVergangenheit', function()
-         * {
-         * $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
-         * $abholtermin= Input::get('abholtermin');
-         * return   $abholtermin = !before:$currentDate->format('mm/dd/yyyy');
-         * });*/
 
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {
@@ -172,6 +171,17 @@ class FormController  extends BaseController
 
     public function validateSave()
     {
+        date_default_timezone_set('Europe/Berlin');
+
+        //see what timezone the server is currently in via:
+        //$timezone = date_default_timezone_get();
+        //echo "The current server timezone is: " . $timezone;
+
+
+        $yesterday = date('m/d/Y', time() - 86400);
+        $abholtermin= date('m/d/Y', time(Input::get('abholtermin')) - 86400);
+        $minLiefertermin= date('m/d/Y', time(Input::get('minLiefertermin')) - 86400);
+
         $rules = array(
 
 
@@ -188,9 +198,9 @@ class FormController  extends BaseController
             'dp_city' => 'alpha_dash',
 
 
-            // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
-            // 'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
-            // 'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
+            'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
+            'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
+            'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
 
             // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
 
@@ -215,12 +225,6 @@ class FormController  extends BaseController
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
-        /** $validator -> sometimes('abholtermin', 'liegtInVergangenheit', function()
-         * {
-         * $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
-         * $abholtermin= Input::get('abholtermin');
-         * return   $abholtermin = !before:$currentDate->format('mm/dd/yyyy');
-         * });*/
 
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {

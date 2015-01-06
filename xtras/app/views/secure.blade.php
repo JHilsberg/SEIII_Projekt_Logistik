@@ -191,10 +191,33 @@
 <h2 class="">{{Lang::get('formular.pickup_delivery')}}</h2>
 <p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.pickup'), 'id' => 'calendar')) }}
 </p>
+
+   @if($errors->first('abholtermin'))
+              <div class="alert alert-info">
+                  {{ $errors->first('abholtermin') }}
+               </div>
+           @endif
+
+
+
 <p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.min_delivery'), 'id' => 'calendar2')) }}
 </p>
+
+  @if($errors->first('minLiefertermin'))
+              <div class="alert alert-info">
+                  {{ $errors->first('minLiefertermin') }}
+               </div>
+           @endif
+
+
 <p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
 </p>
+
+  @if($errors->first('maxLiefertermin'))
+              <div class="alert alert-info">
+                  {{ $errors->first('maxLiefertermin') }}
+               </div>
+           @endif
 
 
 <div>
