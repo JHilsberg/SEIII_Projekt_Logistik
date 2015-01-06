@@ -73,6 +73,7 @@ return array(
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
     "alpha_spaces" => "You have entered invalid characters.",
+    "alpha_spaces_simple" => "You have entered invalid characters.",
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines
@@ -88,15 +89,18 @@ return array(
 
         'lp_name' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
+            'alpha_spaces_simple' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'lp_street' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
+            'alpha_spaces_simple' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'lp_number' => array(
             'required' => 'This mandatory field can not be empty.',
             'alpha_num' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'lp_plz' => array(
             'required' => 'This mandatory field can not be empty.',
@@ -105,19 +109,23 @@ return array(
         ),
         'lp_city' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
+            'alpha_spaces_simple' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'dp_name' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
+            'alpha_spaces_simple' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'dp_street' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
+            'alpha_spaces_simple' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'dp_number' => array(
             'required' => 'This mandatory field can not be empty.',
             'alpha_num' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'dp_plz' => array(
             'required' => 'This mandatory field can not be empty.',
@@ -126,7 +134,8 @@ return array(
         ),
         'dp_city' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
+            'alpha_spaces_simple' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
 
         'abholtermin' => array(
@@ -154,16 +163,18 @@ return array(
             'required' => 'This mandatory field can not be empty.',
             'numeric' => 'Number is invalid.',
             'min' => 'The number of containers must be at least 1.',
+            'digits_between' => 'You have exceeded the maximum character length for this field.',
         ),
         'beschreibung' => array(
             'required' => 'This mandatory field can not be empty.',
-            'alpha_dash' => 'You have entered invalid characters.',
-            'digits_between' => 'You have exceeded the maximum character length for this field.',
+            'alpha_spaces' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'gewicht' => array(
             'required' => 'This mandatory field can not be empty.',
             'numeric' => 'Number is invalid.',
-            'min' => 'The weight of the goods must be specified. ',
+            'min' => 'The weight of the goods must not be less than 0. ',
+            'digits_between' => 'You have exceeded the maximum character length for this field.',
         ),
         /**
         'einheit' => array(
@@ -171,12 +182,12 @@ return array(
             => 'Sie haben eine falsche Einheit ausgewählt.',
         ),*/
         'verpackung' => array(
-            'alpha_dash' => 'You have entered invalid characters.',
-            'digits_between' => 'You have exceeded the maximum character length for this field.',
+            'alpha_spaces' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'bemerkung' => array(
-            'alpha_dash' => 'You have entered invalid characters.',
-            'digits_between' => 'You have exceeded the maximum character length for this field.',
+            'alpha_spaces' => 'You have entered invalid characters.',
+            'between' => 'You have exceeded the maximum character length for this field.',
         ),
         'transportmittel' => array(
             'required' => 'You must tick at least one of this options.',
