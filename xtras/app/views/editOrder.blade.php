@@ -18,7 +18,56 @@
 
 </head>
 <body onload="@if(App::getLocale() == 'de' && Session::has('saved'))openDataBaseSuccessDE()
-                      @elseif(App::getLocale() == 'en' && Session::has('saved'))openDataBaseSuccessEN()@endif">
+                      @elseif(App::getLocale() == 'en' && Session::has('saved'))openDataBaseSuccessEN()@endif;
+document.getElementById('lp_name').value='{{$order->abholadresse()->first()->firma}}';
+document.getElementById('lp_street').value='{{$order->abholadresse()->first()->strasse}}';
+document.getElementById('lp_number').value='{{$order->abholadresse()->first()->hausnummer}}';
+document.getElementById('lp_plz').value='{{$order->abholadresse()->first()->postleitzahl}}';
+document.getElementById('lp_city').value='{{$order->abholadresse()->first()->ort}}';
+
+document.getElementById('dp_name').value='{{$order->lieferadresse()->first()->firma}}';
+document.getElementById('dp_street').value='{{$order->lieferadresse()->first()->strasse}}';
+document.getElementById('dp_number').value='{{$order->lieferadresse()->first()->hausnummer}}';
+document.getElementById('dp_plz').value='{{$order->lieferadresse()->first()->postleitzahl}}';
+document.getElementById('dp_city').value='{{$order->lieferadresse()->first()->ort}}';
+
+document.getElementById('calendar').value='{{$order->lieferdatum}}';
+document.getElementById('calendar2').value='{{$order->minlieferzeit}}';
+document.getElementById('calendar3').value='{{$order->maxlieferzeit}}';
+
+document.getElementById('anzahlBehaelter').value='{{$order->anzahltransportbehaelter}}';
+document.getElementById('behaelter').value='{{$order->transportbehaelter}}';
+
+if('{{$order->schiff}}'==1)
+document.getElementById('schiff').checked=true;
+
+if('{{$order->lkw}}'==1)
+document.getElementById('lkw').checked=true;
+
+if('{{$order->zug}}'==1)
+document.getElementById('zug').checked=true;
+
+if('{{$order->flugzeug}}'==1)
+document.getElementById('flugzeug').checked=true;
+
+if('{{$order->pkw}}'==1)
+document.getElementById('pkw').checked=true;
+
+if('{{$order->egal}}'==1)
+document.getElementById('egal').checked=true;
+
+if('{{$order->gefahrengut}}'==1)
+document.getElementById('gefahrengut').checked=false;
+
+document.getElementById('beschreibung').value='{{$order->warenbeschreibung}}';
+document.getElementById('gewicht').value='{{$order->warengewicht}}';
+
+document.getElementById('verpackung').value='{{$order->warenverpackung}}';
+document.getElementById('bemerkung').value='{{$order->bemerkung}}';
+
+
+
+                      ">
 
 <nav role="navigation" class="navbar navbar-default">
 
@@ -81,12 +130,10 @@
 
 <div class="gesamt">
 
-
-{{$order->warenbeschreibung}}
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
-<p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}</p>
+<p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control', 'id' =>'lp_name'));}}</p>
 
 
           @if($errors->first('lp_name'))
@@ -99,8 +146,8 @@
 
 
 <p class="form-paragraph form-inline">
-        {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
-        {{ Form::text('lp_number', Input::old('lp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}
+        {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control', 'id' =>'lp_street'));}}
+        {{ Form::text('lp_number', Input::old('lp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control', 'id' =>'lp_number'));}}
 </p>
 
           @if($errors->first('lp_street'))
@@ -118,8 +165,8 @@
 
 
 <p class="form-paragraph form-inline">
-    {{ Form::text('lp_plz', Input::old('lp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control'));}}
-    {{ Form::text('lp_city', Input::old('lp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control'));}}
+    {{ Form::text('lp_plz', Input::old('lp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control', 'id' =>'lp_plz'));}}
+    {{ Form::text('lp_city', Input::old('lp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control', 'id' =>'lp_city'));}}
 </p>
 
 
@@ -140,7 +187,7 @@
 <div class="col-md-4">
 <h2>{{Lang::get('formular.deliveryPlace')}}</h2>
 <p class="form-paragraph">
-    {{ Form::text('dp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}
+    {{ Form::text('dp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control', 'id' =>'dp_name'));}}
 </p>
 
           @if($errors->first('dp_name'))
@@ -150,8 +197,8 @@
            @endif
 
 <p class="form-paragraph form-inline">
-{{ Form::text('dp_street', Input::old('dp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
-{{ Form::text('dp_number', Input::old('dp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}</p>
+{{ Form::text('dp_street', Input::old('dp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control', 'id' =>'dp_street'));}}
+{{ Form::text('dp_number', Input::old('dp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control', 'id' =>'dp_number'));}}</p>
 
     @if($errors->first('dp_street'))
         <div class="alert alert-info">
@@ -167,8 +214,8 @@
 
 
 <p class="form-paragraph form-inline">
-    {{ Form::text('dp_plz', Input::old('dp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control'));}}
-    {{ Form::text('dp_city', Input::old('dp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control'));}}
+    {{ Form::text('dp_plz', Input::old('dp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control', 'id' =>'dp_plz'));}}
+    {{ Form::text('dp_city', Input::old('dp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control', 'id' =>'dp_city'));}}
 </p>
 
           @if($errors->first('dp_plz'))
@@ -221,8 +268,8 @@
 <div>
 <h2>{{Lang::get('formular.casket')}}</h2>
 <p class="form-paragraph form-inline">
-    {{Form::number('anzahlBehaelter', Input::old('anzahlBehaelter'),array('placeholder' =>Lang::get('formular.quantity'), 'class' => 'form-control'));}}
-    {{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C',array('class' => 'form-control'));}}
+    {{Form::number('anzahlBehaelter', Input::old('anzahlBehaelter'),array('placeholder' =>Lang::get('formular.quantity'), 'class' => 'form-control', 'id' =>'anzahlBehaelter'));}}
+    {{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C',array('class' => 'form-control', 'id' =>'behaelter'));}}
 </p>
 
           @if($errors->first('anzahlBehaelter'))
@@ -238,12 +285,12 @@
 <div class="col-md-4">
 <h2>{{Lang::get('formular.means_transport')}}</h2>
 <?php $transportmittel =  Input::old('transportmittel[]', array());?>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','schiff', in_array('schiff', $transportmittel));}} {{Lang::get('formular.ship')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','lkw', in_array('lkw', $transportmittel));}} {{Lang::get('formular.lorry')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','zug', in_array('zug', $transportmittel));}} {{Lang::get('formular.train')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','pkw', in_array('pkw', $transportmittel));}} {{Lang::get('formular.car')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','flugzeug', in_array('flugzeug', $transportmittel));}} {{Lang::get('formular.airplane')}}</p>
-<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','egal', in_array('egal', $transportmittel));}} {{Lang::get('formular.similar')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','schiff', in_array('schiff', $transportmittel), array('id' => 'schiff'));}} {{Lang::get('formular.ship')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','lkw', in_array('lkw', $transportmittel), array('id' => 'lkw'));}} {{Lang::get('formular.lorry')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','zug', in_array('zug', $transportmittel), array('id' => 'zug'));}} {{Lang::get('formular.train')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','pkw', in_array('pkw', $transportmittel), array('id' => 'pkw'));}} {{Lang::get('formular.car')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','flugzeug', in_array('flugzeug', $transportmittel), array('id' => 'flugzeug'));}} {{Lang::get('formular.airplane')}}</p>
+<p class="form-paragraph">{{ Form::checkbox('transportmittel[]','egal', in_array('egal', $transportmittel), array('id' => 'egal'));}} {{Lang::get('formular.similar')}}</p>
           @if($errors->first('transportmittel'))
               <div class="alert alert-info">
                   {{ $errors->first('transportmittel') }}
@@ -256,8 +303,8 @@
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.prod_info')}}</h2>
-<p class="form-paragraph">{{ Form::checkbox('gefahrgut', Input::old('gefahrgut'));}} {{Lang::get('formular.dangerous')}}</p>
-<p class="form-paragraph">{{Form::textarea('beschreibung', Input::old('beschreibung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.description_goods')));}}</p>
+<p class="form-paragraph">{{ Form::checkbox('gefahrgut','gefahrgut', Input::old('gefahrgut'),array('id' => 'gefahrengut'));}} {{Lang::get('formular.dangerous')}}</p>
+<p class="form-paragraph">{{Form::textarea('beschreibung', Input::old('beschreibung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.description_goods'), 'id' =>'beschreibung'));}}</p>
 
           @if($errors->first('beschreibung'))
               <div class="alert alert-info">
@@ -266,8 +313,8 @@
            @endif
 
 <p class="form-paragraph form-inline">
-{{Form::number('gewicht', Input::old('gewicht'),array('placeholder'=>Lang::get('formular.weight'), 'class' => 'form-control'));}}
-{{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T', array('class' => 'form-control'));}}</p>
+{{Form::number('gewicht', Input::old('gewicht'),array('placeholder'=>Lang::get('formular.weight'), 'class' => 'form-control', 'id' =>'gewicht'));}}
+{{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T', array('class' => 'form-control', 'id' =>'einheit'));}}</p>
 
           @if($errors->first('gewicht'))
               <div class="alert alert-info">
@@ -276,7 +323,7 @@
            @endif
 
 <p class="form-paragraph">
-{{ Form::text('verpackung', Input::old('verpackung'),array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control'));}}</p>
+{{ Form::text('verpackung', Input::old('verpackung'),array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control', 'id' =>'verpackung'));}}</p>
 
         @if($errors->first('verpackung'))
             <div class="alert alert-info">
@@ -290,7 +337,7 @@
 <h2>{{Lang::get('formular.other')}}</h2>
 <div class="top">
 <p class="form-paragraph">
-{{Form::textarea('bemerkung', Input::old('bemerkung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.comment')))}}</p>
+{{Form::textarea('bemerkung', Input::old('bemerkung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.comment'), 'id' =>'bemerkung'))}}</p>
 
         @if($errors->first('bemerkung'))
             <div class="alert alert-info">

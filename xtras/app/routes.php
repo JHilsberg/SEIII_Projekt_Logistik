@@ -38,10 +38,10 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
 
     Route::post('editOrder/{id}',array('before' => 'auth','as' => 'editOrder', function($id) {
 
-    $order = Order::where('id', '=', $id);
+            $order=Order::find($id);
 
         return View::make('editOrder')
-           ->with('order', $order);
+         ->with('order', $order);
     }));
 
 
