@@ -93,7 +93,7 @@
             <td>{{$order->lieferadresse()->first()->firma}}</td>
             <td>{{$order->lieferadresse()->first()->ort}}</td>
             <td>{{$order->warenbeschreibung}}</td>
-            <td>{{date("d.m.y h:m", strtotime($order->abgespeichert))}}</td>
+            <td>{{date("d.m.y H:m", strtotime($order->abgespeichert))}}</td>
             <td>
                 {{ Form::open(['route' => ['editOrder', $order->id]]) }}
                 {{ Form::submit(Lang::get('orderhistory.edit'), array('class' => 'btn btn-primary btn-block', 'name' => 'test')) }}
