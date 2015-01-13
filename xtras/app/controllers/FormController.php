@@ -180,27 +180,26 @@ class FormController  extends BaseController
 
         $rules = array(
 
-
-            'lp_name' => 'required|alpha_spaces|between:0,32',
-            'lp_street' => 'required|alpha_spaces|between:0,64',
+            'lp_name' => 'required|alpha_spaces_simple|between:0,32',
+            'lp_street' => 'required|alpha_spaces_simple|between:0,64',
             'lp_number' => 'required|alpha_num|between:0,5',
             'lp_plz' => 'required|numeric|digits:5',
-            'lp_city' => 'required|alpha_spaces|between:0,64',
+            'lp_city' => 'required|alpha_spaces_simple|between:0,64',
 
-            'dp_name' => 'required|alpha_spaces|between:0,32',
-            'dp_street' => 'required|alpha_spaces|between:0,64',
+            'dp_name' => 'required|alpha_spaces_simple|between:0,32',
+            'dp_street' => 'required|alpha_spaces_simple|between:0,64',
             'dp_number' => 'required|alpha_num|between:0,5',
             'dp_plz' => 'required|numeric|digits:5',
-            'dp_city' => 'required|alpha_spaces|between:0,64',
+            'dp_city' => 'required|alpha_spaces_simple|between:0,64',
 
 
             'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
             'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
             'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
 
-            'anzahlBehaelter' => 'required|numeric|digits_between:0,11',
+            'anzahlBehaelter' => 'required|numeric|min:1|digits_between:0,11',
             'beschreibung' => 'required|alpha_spaces|between:0,250',
-            'gewicht' => 'required|numeric|min:1',
+            'gewicht' => 'required|numeric|min:1|digits_between:0,20',
             'verpackung' => 'alpha_spaces|between:0,250',
             'bemerkung' => 'alpha_spaces|between:0,250',
             'transportmittel' => 'required'
@@ -208,7 +207,13 @@ class FormController  extends BaseController
 
 
         );
+        //Sonderzeichen für Beschreibung, Verpackung und Bemerkung
         Validator::extend('alpha_spaces', function($attribute, $value)
+        {
+            return preg_match('/^[\pL\s\w-+&?%@€:()_.,0-9]+$/u', $value);
+        });
+        //Sonderzeichen für Verlade- und Zielort
+        Validator::extend('alpha_spaces_simple', function($attribute, $value)
         {
             return preg_match('/^[\pL\s-()_.,]+$/u', $value);
         });
