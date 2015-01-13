@@ -40,9 +40,14 @@ class SubmitController extends BaseController{
         $xmlRoot->appendChild($domtree->createElement('numberOfContainers', $order->anzahltransportbehaelter));
         $xmlRoot->appendChild($domtree->createElement('descriptionOfGoods', $order->warenbeschreibung));
         $xmlRoot->appendChild($domtree->createElement('hazardousGoods', $order->gefahrengut));
+
         $xmlRoot->appendChild($domtree->createElement('goodsPackaging', $order->warenverpackung));
+
         $xmlRoot->appendChild($domtree->createElement('weight', $order->warengewicht));
         $xmlRoot->appendChild($domtree->createElement('comment', $order->bemerkung));
+
+
+
 
         $meansOfTransport = $domtree->createElement('meansOfTransport');
         $meansOfTransport->appendChild($domtree->createElement('hgv', $order->lkw));
@@ -51,10 +56,11 @@ class SubmitController extends BaseController{
         $meansOfTransport->appendChild($domtree->createElement('car', $order->pkw));
         $meansOfTransport->appendChild($domtree->createElement('flight', $order->flugzeug));
         $meansOfTransport->appendChild($domtree->createElement('others', $order->egal));
+        $xmlRoot->appendChild($meansOfTransport);
 
         $xmlRoot->appendChild($domtree->createElement('sent',$order->abgesendet));
 
-        return $domtree->saveXML();
+        return $domtree->saveXML(NULL, LIBXML_NOEMPTYTAG);
     }
 
 }
