@@ -13,26 +13,6 @@
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/bootbox.min.js') }}
     {{ HTML::script('js/bootstrap-datepicker.js') }}
-
-
-
-
-z    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#calendar').datepicker({});
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#calendar2').datepicker({});
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#calendar3').datepicker({});
-        });
-    </script>
-
 </head>
 <body>
 <nav role="navigation" class="navbar navbar-default">
@@ -120,7 +100,7 @@ z    <script type="text/javascript">
                 {{ Form::close() }}
             </td>
             <td>
-                {{ Form::open(['action' => 'PDFController@start']) }}
+                {{ Form::open(array('action' => 'PDFController@start', 'target' => '_blank',))}}
                 {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'show')) }}
                 {{ Form::close() }}
             </td>

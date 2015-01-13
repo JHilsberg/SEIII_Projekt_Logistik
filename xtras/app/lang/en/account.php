@@ -17,5 +17,5 @@ return array(
     'ort'                => 'City',
     'email'              => 'E-Mail',
     'save'               => 'Save',
-     'land'              => 'Country'
+    'land'              => 'Country'
 );

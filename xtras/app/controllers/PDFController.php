@@ -11,11 +11,6 @@ class PDFController extends BaseController
     public function start()
     {
 
-        /*if (Input::get('show')) {
-            return $this->showPDF();
-        } elseif (Input::get('save')) {
-            return $this->savePDF();
-        }*/
         $action = Input::get('action');
         return $this->$action();
 
@@ -34,7 +29,7 @@ class PDFController extends BaseController
     {
         $file = public_path() . "/pdf/file.pdf";
         if (file_exists($file)) {
-            $headers = array('content-type' => 'application/pdf',);
+            $headers = array('content-type' => 'application/pdf');
             $content = file_get_contents($file);
             return Response::make($content, 200, $headers);
         }
