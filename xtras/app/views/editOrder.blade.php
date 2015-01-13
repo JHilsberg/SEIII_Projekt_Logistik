@@ -31,9 +31,9 @@ document.getElementById('dp_number').value='{{$order->lieferadresse()->first()->
 document.getElementById('dp_plz').value='{{$order->lieferadresse()->first()->postleitzahl}}';
 document.getElementById('dp_city').value='{{$order->lieferadresse()->first()->ort}}';
 
-document.getElementById('calendar').value='{{$order->lieferdatum}}';
-document.getElementById('calendar2').value='{{$order->minlieferzeit}}';
-document.getElementById('calendar3').value='{{$order->maxlieferzeit}}';
+document.getElementById('calendar').value='{{date("m/d/Y", strtotime($order->lieferdatum))}}';
+document.getElementById('calendar2').value='{{date("m/d/Y", strtotime($order->minlieferzeit))}}';
+document.getElementById('calendar3').value='{{date("m/d/Y", strtotime($order->maxlieferzeit))}}';
 
 document.getElementById('anzahlBehaelter').value='{{$order->anzahltransportbehaelter}}';
 document.getElementById('behaelter').value='{{$order->transportbehaelter}}';
@@ -123,8 +123,8 @@ document.getElementById('bemerkung').value='{{$order->bemerkung}}';
 
     </div>
 </nav>
+{{ Form::open(['action' => ['submitEditOrder', $order->id],'class'=>'form-horizontal','role'=>'form','method'=>'POST']) }}
 
-<form class="form-horizontal" role="form" method="POST" action="{{ URL::to('transportauftrag') }}">
 <!--<h1 class="form-heading" style="text-align: center">Formular</h1>
 -->
 

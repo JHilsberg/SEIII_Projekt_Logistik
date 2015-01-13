@@ -36,14 +36,32 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
         return View::make('myAccount');
     }));
 
-    Route::post('editOrder/{id}',array('before' => 'auth','as' => 'editOrder', function($id) {
+    Route::get('edit/{id}', array('as'=>'edit','before' => 'auth',function(){
+       $order=Order::find(Route::input('id'));
+       return View::make('editOrder')
+       ->with('order', $order);
 
-            $order=Order::find($id);
-
-        return View::make('editOrder')
-         ->with('order', $order);
     }));
 
+    Route::post('editOrder/{id}',array('before' => 'auth','as' => 'editOrder', function($id) {
+
+          //  $order=Order::find($id);
+
+        return Redirect::route('edit', array('id' => $id));
+
+       // return View::make('editOrder')
+         //->with('order', $order);
+    }));
+
+    Route::post('submitEditOrder/{id}',array('before' => 'auth','uses'=>'FormController@editSubmitted','as' => 'submitEditOrder', function($id) {
+
+        //  $order=Order::find($id);
+
+       // return Redirect::route('edit', array('id' => $id));
+
+        // return View::make('editOrder')
+        //->with('order', $order);
+    }));
 
 });
 Route::post('login', array('uses' => 'SessionController@doLogin'));

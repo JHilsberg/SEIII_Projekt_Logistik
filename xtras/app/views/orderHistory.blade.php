@@ -116,9 +116,9 @@
             <td>{{$order->lieferadresse()->first()->firma}}</td>
             <td>{{$order->lieferadresse()->first()->ort}}</td>
             <td>{{$order->warenbeschreibung}}</td>
-            <td>{{date("d.m.y h:m", strtotime($order->abgespeichert))}}</td>
+            <td>{{date("d.m.y H:i", strtotime($order->abgespeichert))}}</td>
 
-            @if(($order->abgesendet!='0000-00-00 00:00:00' && !(File::exists(public_path().'\pdf\\'.Auth::user()->email.'\\'.$order->id.'\file.pdf'))))<!--Server URL setzen-->
+            @if(($order->abgesendet!='0000-00-00 00:00:00' && !(File::exists(public_path().'/pdf//'.Auth::user()->email.'//'.$order->id.'/file.pdf'))))<!--Server URL setzen-->
             <td>{{Lang::get('orderhistory.procress')}}</td>
                 <td>
 
@@ -129,7 +129,7 @@
                 <td>
 
                 </td>
-            @elseif(($order->abgesendet!='0000-00-00 00:00:00' && (File::exists(public_path().'\pdf\\'.Auth::user()->email.'\\'.$order->id.'\file.pdf'))))<!--Server URL setzen-->
+            @elseif(($order->abgesendet!='0000-00-00 00:00:00' && (File::exists(public_path().'/pdf//'.Auth::user()->email.'//'.$order->id.'/file.pdf'))))<!--Server URL setzen-->
                 <td>{{Lang::get('orderhistory.done')}}</td>
                 <td>
 
