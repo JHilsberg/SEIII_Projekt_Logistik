@@ -13,5 +13,7 @@ return array(
     'targetenterprise' => 'Zielfirma',
     'actions' =>'Aktionen',
     'timestamp' => 'erstellt am',
-    'edit' => 'bearbeiten'
+    'edit' => 'bearbeiten',
+    'save' => 'PDF speichern',
+    'show' => 'PDF anzeigen'
 );

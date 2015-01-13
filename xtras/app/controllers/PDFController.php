@@ -11,11 +11,13 @@ class PDFController extends BaseController
     public function start()
     {
 
-        if (Input::get('show')) {
+        /*if (Input::get('show')) {
             return $this->showPDF();
         } elseif (Input::get('save')) {
             return $this->savePDF();
-        }
+        }*/
+        $action = Input::get('action');
+        return $this->$action();
 
     }
 

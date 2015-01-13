@@ -73,6 +73,7 @@ return array(
 	"url"                  => "The :attribute format is invalid.",
 	"timezone"             => "The :attribute must be a valid zone.",
     "alpha_spaces" => "Sie haben ungültige Zeichen eingegeben.",
+    "alpha_spaces_simple" => "Sie haben ungültige Zeichen eingegeben.",
 	/*
 	|--------------------------------------------------------------------------
 	| Custom Validation Language Lines
@@ -88,15 +89,18 @@ return array(
 
         'lp_name' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_spaces_simple' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'lp_street' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_spaces_simple' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'lp_number' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'alpha_num' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'lp_plz' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
@@ -105,19 +109,23 @@ return array(
         ),
         'lp_city' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_spaces_simple' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'dp_name' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_spaces_simple' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'dp_street' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_spaces_simple' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'dp_number' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'alpha_num' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'dp_plz' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
@@ -126,7 +134,8 @@ return array(
         ),
         'dp_city' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
+            'alpha_spaces_simple' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
 
         'abholtermin' => array(
@@ -155,16 +164,18 @@ return array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'numeric' => 'Anzahl ist ungültig.',
             'min' => 'Die Anzahl der Behälter muss mindestens 1 sein.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'beschreibung' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'alpha_spaces' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'gewicht' => array(
             'required' => 'Dieses Pflichtfeld darf nicht leer sein.',
             'numeric' => 'Gewicht ist ungültig.',
-            'min' => 'Das Gewicht der Ware muss angegeben werden.',
+            'min' => 'Das Gewicht der Ware darf nicht kleiner 0 sein.',
+            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         /**
         'einheit' => array(
@@ -172,12 +183,12 @@ return array(
         => 'Sie haben eine falsche Einheit ausgewählt.',
         ),*/
         'verpackung' => array(
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'alpha_spaces' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'bemerkung' => array(
-            'alpha_dash' => 'Sie haben ungültige Zeichen angegeben.',
-            'digits_between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
+            'alpha_spaces' => 'Sie haben ungültige Zeichen angegeben.',
+            'between' => 'Sie haben die maximale Zeichenlänge für dieses Feld überschritten.',
         ),
         'transportmittel' => array(
             'required' => 'Sie müssen mindestens ein Feld angekreuzt haben.',
