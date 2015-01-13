@@ -17,7 +17,7 @@
 
 
 
-    <script type="text/javascript">
+z    <script type="text/javascript">
         $(document).ready(function () {
             $('#calendar').datepicker({});
         });
@@ -121,12 +121,12 @@
             </td>
             <td>
                 {{ Form::open(['action' => 'PDFController@start']) }}
-                {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'action')) }}
+                {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'show')) }}
                 {{ Form::close() }}
             </td>
             <td>
                 {{ Form::open(['action' => 'PDFController@start']) }}
-                {{ Form::submit(Lang::get('orderhistory.save'), array('class' => 'btn btn-primary btn-block', 'name' => 'action')) }}
+                {{ Form::submit(Lang::get('orderhistory.save'), array('class' => 'btn btn-primary btn-block', 'name' => 'save')) }}
                 {{ Form::close() }}
             </td>
         </tr>
