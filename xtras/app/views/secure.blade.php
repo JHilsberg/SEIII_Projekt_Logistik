@@ -86,102 +86,73 @@
 <div class="form-group">
 <div class="col-md-4">
 <h2>{{Lang::get('formular.loading_place')}}</h2>
-<p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}</p>
-
-
-          @if($errors->first('lp_name'))
-              <div class="alert alert-info">
-                  {{ $errors->first('lp_name') }}
-               </div>
-           @endif
-
-
-
-
+     @if($errors->first('lp_name'))
+        <p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control hasError'));}}</p>
+     @else
+        <p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}</p>
+     @endif
 <p class="form-paragraph form-inline">
-        {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
-        {{ Form::text('lp_number', Input::old('lp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}
-</p>
-
-          @if($errors->first('lp_street'))
-              <div class="alert alert-info">
-                  {{ $errors->first('lp_street') }}
-               </div>
-           @endif
-
-          @if($errors->first('lp_number'))
-              <div class="alert alert-info">
-                  {{ $errors->first('lp_number') }}
-               </div>
-           @endif
-
-
-
-<p class="form-paragraph form-inline">
-    {{ Form::text('lp_plz', Input::old('lp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control'));}}
-    {{ Form::text('lp_city', Input::old('lp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control'));}}
+     @if($errors->first('lp_street'))
+         {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control hasError'));}}
+     @else
+      {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
+     @endif
+     @if($errors->first('lp_number'))
+         {{ Form::text('lp_number', Input::old('lp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control hasError'));}}
+     @else
+         {{ Form::text('lp_number', Input::old('lp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}
+     @endif
 </p>
 
 
-           @if($errors->first('lp_plz'))
-              <div class="alert alert-info">
-                  {{ $errors->first('lp_plz') }}
-               </div>
-           @endif
-
-
-          @if($errors->first('lp_city'))
-              <div class="alert alert-info">
-                  {{ $errors->first('lp_city') }}
-               </div>
-           @endif
-
+<p class="form-paragraph form-inline">
+     @if($errors->first('lp_plz'))
+        {{ Form::text('lp_plz', Input::old('lp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('lp_plz', Input::old('lp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control'));}}
+     @endif
+     @if($errors->first('lp_city'))
+        {{ Form::text('lp_city', Input::old('lp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('lp_city', Input::old('lp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control'));}}
+     @endif
+</p>
 </div>
 <div class="col-md-4">
 <h2>{{Lang::get('formular.deliveryPlace')}}</h2>
 <p class="form-paragraph">
-    {{ Form::text('dp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}
+     @if($errors->first('dp_name'))
+        {{ Form::text('dp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('dp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}
+     @endif
 </p>
 
-          @if($errors->first('dp_name'))
-              <div class="alert alert-info">
-                  {{ $errors->first('dp_name') }}
-               </div>
-           @endif
-
 <p class="form-paragraph form-inline">
-{{ Form::text('dp_street', Input::old('dp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
-{{ Form::text('dp_number', Input::old('dp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}</p>
-
-    @if($errors->first('dp_street'))
-        <div class="alert alert-info">
-            {{ $errors->first('dp_street') }}
-        </div>
-    @endif
-
-    @if($errors->first('dp_number'))
-        <div class="alert alert-info">
-            {{ $errors->first('dp_number') }}
-        </div>
-    @endif
-
-
-<p class="form-paragraph form-inline">
-    {{ Form::text('dp_plz', Input::old('dp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control'));}}
-    {{ Form::text('dp_city', Input::old('dp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control'));}}
+     @if($errors->first('dp_street'))
+        {{ Form::text('dp_street', Input::old('dp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('dp_street', Input::old('dp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
+     @endif
+     @if($errors->first('dp_number'))
+        {{ Form::text('dp_number', Input::old('dp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('dp_number', Input::old('dp_number'),array('placeholder' => Lang::get('formular.number'), 'class' => 'form-control'));}}
+     @endif
 </p>
+<p class="form-paragraph form-inline">
 
-          @if($errors->first('dp_plz'))
-              <div class="alert alert-info">
-                  {{ $errors->first('dp_plz') }}
-               </div>
-           @endif
-
-                @if($errors->first('dp_city'))
-                    <div class="alert alert-info">
-                        {{ $errors->first('dp_city') }}
-                     </div>
-                 @endif
+     @if($errors->first('dp_plz'))
+        {{ Form::text('dp_plz', Input::old('dp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('dp_plz', Input::old('dp_plz'),array('placeholder' => Lang::get('formular.plz'), 'class' => 'form-control'));}}
+     @endif
+     @if($errors->first('dp_city'))
+        {{ Form::text('dp_city', Input::old('dp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control hasError'));}}
+     @else
+        {{ Form::text('dp_city', Input::old('dp_city'),array('placeholder' => Lang::get('formular.city'), 'class' => 'form-control'));}}
+     @endif
+</p>
 
 </div>
 </div>
@@ -189,48 +160,46 @@
 <div class="form-group">
 <div class="col-md-4">
 <h2 class="">{{Lang::get('formular.pickup_delivery')}}</h2>
-<p class="form-paragraph">{{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.pickup'), 'id' => 'calendar')) }}
+
+
+
+
+
+
+<p class="form-paragraph">
+     @if($errors->first('abholtermin'))
+        {{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control hasError','placeholder' => Lang::get('formular.pickup'), 'id' => 'calendar')) }}
+     @else
+        {{ Form::text('abholtermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.pickup'), 'id' => 'calendar')) }}
+     @endif
 </p>
 
-   @if($errors->first('abholtermin'))
-              <div class="alert alert-info">
-                  {{ $errors->first('abholtermin') }}
-               </div>
-           @endif
-
-<p class="form-paragraph">{{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.min_delivery'), 'id' => 'calendar2')) }}
+<p class="form-paragraph">
+     @if($errors->first('minLiefertermin'))
+        {{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control hasError','placeholder' => Lang::get('formular.min_delivery'), 'id' => 'calendar2')) }}
+     @else
+        {{ Form::text('minLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.min_delivery'), 'id' => 'calendar2')) }}
+     @endif
 </p>
 
-  @if($errors->first('minLiefertermin'))
-              <div class="alert alert-info">
-                  {{ $errors->first('minLiefertermin') }}
-               </div>
-           @endif
-
-
-<p class="form-paragraph">{{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
+<p class="form-paragraph">
+    @if($errors->first('maxLiefertermin'))
+        {{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control hasError','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
+     @else
+        {{ Form::text('maxLiefertermin', null, array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.max_delivery'), 'id' => 'calendar3')) }}
+     @endif
 </p>
-
-  @if($errors->first('maxLiefertermin'))
-              <div class="alert alert-info">
-                  {{ $errors->first('maxLiefertermin') }}
-               </div>
-           @endif
-
 
 <div>
 <h2>{{Lang::get('formular.casket')}}</h2>
 <p class="form-paragraph form-inline">
-    {{Form::number('anzahlBehaelter', Input::old('anzahlBehaelter'),array('placeholder' =>Lang::get('formular.quantity'), 'class' => 'form-control'));}}
+    @if($errors->first('anzahlBehaelter'))
+    {{Form::number('anzahlBehaelter', Input::old('anzahlBehaelter'),array('placeholder' =>Lang::get('formular.quantity'), 'class' => 'form-control hasError'));}}
+     @else
+        {{Form::number('anzahlBehaelter', Input::old('anzahlBehaelter'),array('placeholder' =>Lang::get('formular.quantity'), 'class' => 'form-control'));}}
+     @endif
     {{Form::select('behaelter', array('C' => Lang::get('formular.container'), 'P' => Lang::get('formular.pallet'), 'B' => Lang::get('formular.boxes')), 'C',array('class' => 'form-control'));}}
 </p>
-
-          @if($errors->first('anzahlBehaelter'))
-              <div class="alert alert-info">
-                  {{ $errors->first('anzahlBehaelter') }}
-               </div>
-           @endif
-
 </div>
 </div>
 
@@ -245,7 +214,7 @@
 <p class="form-paragraph">{{ Form::checkbox('transportmittel[]','flugzeug', in_array('flugzeug', $transportmittel));}} {{Lang::get('formular.airplane')}}</p>
 <p class="form-paragraph">{{ Form::checkbox('transportmittel[]','egal', in_array('egal', $transportmittel));}} {{Lang::get('formular.similar')}}</p>
           @if($errors->first('transportmittel'))
-              <div class="alert alert-info">
+              <div class="alert alert-danger">
                   {{ $errors->first('transportmittel') }}
                </div>
            @endif
@@ -257,32 +226,28 @@
 <div class="col-md-4">
 <h2>{{Lang::get('formular.prod_info')}}</h2>
 <p class="form-paragraph">{{ Form::checkbox('gefahrgut', Input::old('gefahrgut'));}} {{Lang::get('formular.dangerous')}}</p>
-<p class="form-paragraph">{{Form::textarea('beschreibung', Input::old('beschreibung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.description_goods')));}}</p>
-
-          @if($errors->first('beschreibung'))
-              <div class="alert alert-info">
-                  {{ $errors->first('beschreibung') }}
-               </div>
-           @endif
-
+<p class="form-paragraph">
+ @if($errors->first('beschreibung'))
+        {{Form::textarea('beschreibung', Input::old('beschreibung'),array('type' => 'text', 'class' => 'form-control hasError','placeholder' => Lang::get('formular.description_goods')));}}
+     @else
+        {{Form::textarea('beschreibung', Input::old('beschreibung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.description_goods')));}}
+     @endif
+</p>
 <p class="form-paragraph form-inline">
-{{Form::number('gewicht', Input::old('gewicht'),array('placeholder'=>Lang::get('formular.weight'), 'class' => 'form-control'));}}
+ @if($errors->first('gewicht'))
+     {{Form::number('gewicht', Input::old('gewicht'),array('placeholder'=>Lang::get('formular.weight'), 'class' => 'form-control hasError'));}}
+ @else
+     {{Form::number('gewicht', Input::old('gewicht'),array('placeholder'=>Lang::get('formular.weight'), 'class' => 'form-control'));}}
+ @endif
 {{Form::select('einheit', array('KG' => Lang::get('formular.kilogram'), 'T' => Lang::get('formular.ton')), 'T', array('class' => 'form-control'));}}</p>
 
-          @if($errors->first('gewicht'))
-              <div class="alert alert-info">
-                  {{ $errors->first('gewicht') }}
-               </div>
-           @endif
-
 <p class="form-paragraph">
-{{ Form::text('verpackung', Input::old('verpackung'),array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control'));}}</p>
-
-        @if($errors->first('verpackung'))
-            <div class="alert alert-info">
-                  {{ $errors->first('verpackung') }}
-            </div>
-        @endif
+ @if($errors->first('verpackung'))
+    {{ Form::text('verpackung', Input::old('verpackung'),array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control hasError'));}}
+ @else
+     {{ Form::text('verpackung', Input::old('verpackung'),array('placeholder' => Lang::get('formular.packaging'), 'class' => 'form-control'));}}
+ @endif
+</p>
 </div>
 
 
@@ -290,13 +255,12 @@
 <h2>{{Lang::get('formular.other')}}</h2>
 <div class="top">
 <p class="form-paragraph">
-{{Form::textarea('bemerkung', Input::old('bemerkung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.comment')))}}</p>
-
-        @if($errors->first('bemerkung'))
-            <div class="alert alert-info">
-                {{ $errors->first('bemerkung') }}
-            </div>
-        @endif
+@if($errors->first('bemerkung'))
+    {{Form::textarea('bemerkung', Input::old('bemerkung'),array('type' => 'text', 'class' => 'form-control hasError','placeholder' => Lang::get('formular.comment')))}}
+ @else
+    {{Form::textarea('bemerkung', Input::old('bemerkung'),array('type' => 'text', 'class' => 'form-control','placeholder' => Lang::get('formular.comment')))}}
+ @endif
+</p>
 
 </div>
 </div>
