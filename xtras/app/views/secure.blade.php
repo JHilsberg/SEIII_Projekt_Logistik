@@ -88,13 +88,14 @@
 <h2>{{Lang::get('formular.loading_place')}}</h2>
      @if($errors->first('lp_name'))
         <p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control hasError'));}}</p>
-     @else
+    @else
         <p class="form-paragraph">{{ Form::text('lp_name', Input::old('lp_name'),array('placeholder' => Lang::get('formular.name'), 'class' => 'form-control'));}}</p>
      @endif
 <p class="form-paragraph form-inline">
      @if($errors->first('lp_street'))
          {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control hasError'));}}
-     @else
+
+    @else
       {{ Form::text('lp_street', Input::old('lp_street'),array('placeholder' => Lang::get('formular.street'), 'class' => 'form-control'));}}
      @endif
      @if($errors->first('lp_number'))
