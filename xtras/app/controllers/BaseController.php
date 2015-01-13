@@ -15,4 +15,14 @@ class BaseController extends Controller {
 		}
 	}
 
+	public function showPDF()
+	{
+		$file = public_path() . "/pdf/file.pdf";
+		if (file_exists($file)) {
+			$headers = array('content-type' => 'application/pdf',);
+			$content = file_get_contents($file);
+			return Response::make($content, 200, $headers);
+		}
+	}
+
 }
