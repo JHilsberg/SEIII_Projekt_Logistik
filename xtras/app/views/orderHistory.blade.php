@@ -121,7 +121,9 @@
             @if(($order->abgesendet!='0000-00-00 00:00:00' && !(File::exists(public_path().'/pdf//'.Auth::user()->email.'//'.$order->id.'/file.pdf'))))<!--Server URL setzen-->
             <td>{{Lang::get('orderhistory.procress')}}</td>
                 <td>
-
+                    {{ Form::open(['route' => ['editOrder', $order->id]]) }}
+                    {{ Form::submit(Lang::get('orderhistory.watch'), array('class' => 'btn btn-primary btn-block', 'name' => 'test')) }}
+                    {{ Form::close() }}
                 </td>
                 <td>
 
@@ -132,7 +134,9 @@
             @elseif(($order->abgesendet!='0000-00-00 00:00:00' && (File::exists(public_path().'/pdf//'.Auth::user()->email.'//'.$order->id.'/file.pdf'))))<!--Server URL setzen-->
                 <td>{{Lang::get('orderhistory.done')}}</td>
                 <td>
-
+                     {{ Form::open(['route' => ['editOrder', $order->id]]) }}
+                    {{ Form::submit(Lang::get('orderhistory.watch'), array('class' => 'btn btn-primary btn-block', 'name' => 'test')) }}
+                    {{ Form::close() }}
                 </td>
                 <td>
                     {{ Form::open(['action' => 'PDFController@start']) }}

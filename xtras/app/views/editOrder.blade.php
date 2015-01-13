@@ -65,8 +65,42 @@ document.getElementById('gewicht').value='{{$order->warengewicht}}';
 document.getElementById('verpackung').value='{{$order->warenverpackung}}';
 document.getElementById('bemerkung').value='{{$order->bemerkung}}';
 
+if('{{$order->abgesendet}}'!='0000-00-00 00:00:00'){
+document.getElementById('save').disabled=true;
+document.getElementById('submit').disabled=true;
+document.getElementById('lp_name').disabled=true;
+document.getElementById('lp_street').disabled=true;
+document.getElementById('lp_number').disabled=true;
+document.getElementById('lp_plz').disabled=true;
+document.getElementById('lp_city').disabled=true;
 
+document.getElementById('dp_name').disabled=true;
+document.getElementById('dp_street').disabled=true;
+document.getElementById('dp_number').disabled=true;
+document.getElementById('dp_plz').disabled=true;
+document.getElementById('dp_city').disabled=true;
 
+document.getElementById('calendar').disabled=true;
+document.getElementById('calendar2').disabled=true;
+document.getElementById('calendar3').disabled=true;
+
+document.getElementById('anzahlBehaelter').disabled=true;
+document.getElementById('behaelter').disabled=true;
+
+document.getElementById('schiff').disabled=true;
+document.getElementById('lkw').disabled=true;
+document.getElementById('zug').disabled=true;
+document.getElementById('flugzeug').disabled=true;
+document.getElementById('pkw').disabled=true;;
+document.getElementById('egal').disabled=true;
+document.getElementById('gefahrengut').disabled=true;
+
+document.getElementById('beschreibung').disabled=true;
+document.getElementById('gewicht').disabled=true;
+document.getElementById('einheit').disabled=true;
+document.getElementById('verpackung').disabled=true;
+document.getElementById('bemerkung').disabled=true;
+}
                       ">
 
 <nav role="navigation" class="navbar navbar-default">
@@ -352,12 +386,12 @@ document.getElementById('bemerkung').value='{{$order->bemerkung}}';
 <div class="form-group">
 <div class="col-md-4">
 <div class="button-space">
-{{ Form::submit(Lang::get('formular.submit'), array('class' => 'btn btn-lg btn-primary btn-block btn-success', 'name' => 'submit')) }}
+{{ Form::submit(Lang::get('formular.submit'), array('class' => 'btn btn-lg btn-primary btn-block btn-success', 'name' => 'submit','id'=>'submit')) }}
 </div>
 </div>
 <div class="button-space">
 <div class="col-md-4">
-{{ Form::submit(Lang::get('formular.save'), array('class' => 'btn btn-lg btn-primary btn-block', 'name' => 'save')) }}
+{{ Form::submit(Lang::get('formular.save'), array('class' => 'btn btn-lg btn-primary btn-block', 'name' => 'save', 'id'=>'save')) }}
 </div>
 </div>
 </div>

@@ -20,5 +20,6 @@ return array(
     'status' => 'status',
     'procress' => 'in procressing',
     'done' => 'contract done',
-    'saveorder' => 'saved'
+    'saveorder' => 'saved',
+    'watch' => 'show details'
 );

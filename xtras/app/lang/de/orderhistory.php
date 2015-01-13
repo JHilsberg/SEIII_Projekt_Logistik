@@ -20,5 +20,6 @@ return array(
     'procress' => 'in Bearbeitung',
     'done' => 'Auftrag abgeschlossen',
     'saveorder' => 'gespeichert',
+    'watch' => 'Details ansehen'
 
 );
