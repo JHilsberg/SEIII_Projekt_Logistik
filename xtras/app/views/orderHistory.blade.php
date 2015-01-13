@@ -13,6 +13,26 @@
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/bootbox.min.js') }}
     {{ HTML::script('js/bootstrap-datepicker.js') }}
+
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar').datepicker({});
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar2').datepicker({});
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#calendar3').datepicker({});
+        });
+    </script>
+
 </head>
 <body>
 <nav role="navigation" class="navbar navbar-default">
@@ -73,6 +93,7 @@
 </nav>
 
 
+
 <table class="table">
     <thead>
     <tr>
@@ -82,10 +103,12 @@
         <th data-field="beschreibung">{{Lang::get('orderhistory.deliveryPlace')}}</th>
         <th data-field="beschreibung">{{Lang::get('orderhistory.description_goods')}}</th>
         <th data-field="abgespeichert">{{Lang::get('orderhistory.timestamp')}}</th>
+        <th data-field="beschreibung">{{Lang::get('orderhistory.status')}}</th>
         <th data-field="abgespeichert">{{Lang::get('orderhistory.actions')}}</th>
     </tr>
     </thead>
     <tbody>
+
     @foreach ($orders as $order)
         <tr>
             <td>{{$order->abholadresse()->first()->firma}}</td>
@@ -93,25 +116,57 @@
             <td>{{$order->lieferadresse()->first()->firma}}</td>
             <td>{{$order->lieferadresse()->first()->ort}}</td>
             <td>{{$order->warenbeschreibung}}</td>
-            <td>{{date("d.m.y H:m", strtotime($order->abgespeichert))}}</td>
-            <td>
-                {{ Form::open(['route' => ['editOrder', $order->id]]) }}
-                {{ Form::submit(Lang::get('orderhistory.edit'), array('class' => 'btn btn-primary btn-block', 'name' => 'test')) }}
-                {{ Form::close() }}
-            </td>
-            <td>
-                {{ Form::open(['action' => 'PDFController@start', 'target' => '_blank'])}}
-                {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'show')) }}
-                {{ Form::close() }}
-            </td>
-            <td>
-                {{ Form::open(['action' => 'PDFController@start']) }}
-                {{ Form::submit(Lang::get('orderhistory.save'), array('class' => 'btn btn-primary btn-block', 'name' => 'save')) }}
-                {{ Form::close() }}
-            </td>
+            <td>{{date("d.m.y h:m", strtotime($order->abgespeichert))}}</td>
+
+            @if(($order->abgesendet!='0000-00-00 00:00:00' && !(File::exists(public_path().'\pdf\\'.Auth::user()->email.'\\'.$order->id.'\file.pdf'))))<!--Server URL setzen-->
+            <td>{{Lang::get('orderhistory.procress')}}</td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+            @elseif(($order->abgesendet!='0000-00-00 00:00:00' && (File::exists(public_path().'\pdf\\'.Auth::user()->email.'\\'.$order->id.'\file.pdf'))))<!--Server URL setzen-->
+                <td>{{Lang::get('orderhistory.done')}}</td>
+                <td>
+
+                </td>
+                <td>
+                    {{ Form::open(['action' => 'PDFController@start']) }}
+                    {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'show')) }}
+                    {{ Form::close() }}
+                </td>
+                <td>
+                    {{ Form::open(['action' => 'PDFController@start']) }}
+                    {{ Form::submit(Lang::get('orderhistory.save'), array('class' => 'btn btn-primary btn-block', 'name' => 'save')) }}
+                    {{ Form::close() }}
+
+                </td>
+            @elseif(($order->abgespeichert!=null)&&($order->abgesendet='0000-00-00 00:00:00' ))
+                <td>{{Lang::get('orderhistory.saveorder')}}</td>
+                <td>
+                    {{ Form::open(['route' => ['editOrder', $order->id]]) }}
+                    {{ Form::submit(Lang::get('orderhistory.edit'), array('class' => 'btn btn-primary btn-block', 'name' => 'test')) }}
+                    {{ Form::close() }}
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+
+            @endif
+
         </tr>
     @endforeach
+
     </tbody>
 </table>
+
 </body>
 </html>

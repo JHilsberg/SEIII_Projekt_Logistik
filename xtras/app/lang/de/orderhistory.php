@@ -15,5 +15,10 @@ return array(
     'timestamp' => 'erstellt am',
     'edit' => 'bearbeiten',
     'save' => 'PDF speichern',
-    'show' => 'PDF anzeigen'
+    'show' => 'PDF anzeigen',
+    'status' => 'Status',
+    'procress' => 'in Bearbeitung',
+    'done' => 'Auftrag abgeschlossen',
+    'saveorder' => 'gespeichert',
+
 );

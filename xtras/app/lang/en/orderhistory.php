@@ -16,5 +16,9 @@ return array(
     'timestamp' => 'created at',
     'edit' => 'edit',
     'save' => 'save PDF',
-    'show' => 'show PDF'
+    'show' => 'show PDF',
+    'status' => 'status',
+    'procress' => 'in procressing',
+    'done' => 'contract done',
+    'saveorder' => 'saved'
 );
