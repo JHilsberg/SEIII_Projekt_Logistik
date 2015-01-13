@@ -5,6 +5,8 @@
  * Date: 25.11.2014
  * Time: 10:50
  */
+use Illuminate\Http\Response;
+
 class FormController  extends BaseController
 {
 
@@ -163,8 +165,11 @@ class FormController  extends BaseController
 
         $order->save();
 
-        echo SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
-        return;
+        $xml=SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
+
+
+        return (new Response($xml, '200'))
+            ->header('Content-Type', 'text/xml');
         /*return Redirect::to('secure')
         ->with('saved', 'saved');*/
     }
@@ -472,8 +477,12 @@ class FormController  extends BaseController
 
         $order->save();
 
-        echo SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
-        return;
+        $xml=SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
+
+
+        return (new Response($xml, '200'))
+            ->header('Content-Type', 'text/xml');
+
         /*return Redirect::to('secure')
         ->with('saved', 'saved');*/
     }
