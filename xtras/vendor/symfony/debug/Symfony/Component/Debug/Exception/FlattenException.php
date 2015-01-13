@@ -232,7 +232,7 @@ class FlattenException
                 // Special case of object, is_object will return false
                 $result[$key] = array('incomplete-object', $this->getClassNameFromIncomplete($value));
             } else {
-                $result[$key] = array('string', (string)$value);
+                $result[$key] = array('string', (string) $value);
             }
         }
 

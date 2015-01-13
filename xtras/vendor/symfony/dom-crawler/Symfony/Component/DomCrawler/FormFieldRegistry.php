@@ -33,16 +33,16 @@ class FormFieldRegistry
     {
         $segments = $this->getSegments($field->getName());
 
-        $target = &$this->fields;
+        $target = & $this->fields;
         while ($segments) {
             if (!is_array($target)) {
                 $target = array();
             }
             $path = array_shift($segments);
             if ('' === $path) {
-                $target = &$target[];
+                $target = & $target[];
             } else {
-                $target = &$target[$path];
+                $target = & $target[$path];
             }
         }
         $target = $field;
@@ -58,13 +58,13 @@ class FormFieldRegistry
     public function remove($name)
     {
         $segments = $this->getSegments($name);
-        $target = &$this->fields;
+        $target = & $this->fields;
         while (count($segments) > 1) {
             $path = array_shift($segments);
             if (!array_key_exists($path, $target)) {
                 return;
             }
-            $target = &$target[$path];
+            $target = & $target[$path];
         }
         unset($target[array_shift($segments)]);
     }
@@ -82,13 +82,13 @@ class FormFieldRegistry
     public function &get($name)
     {
         $segments = $this->getSegments($name);
-        $target = &$this->fields;
+        $target = & $this->fields;
         while ($segments) {
             $path = array_shift($segments);
             if (!array_key_exists($path, $target)) {
                 throw new \InvalidArgumentException(sprintf('Unreachable field "%s"', $path));
             }
-            $target = &$target[$path];
+            $target = & $target[$path];
         }
 
         return $target;
@@ -99,7 +99,7 @@ class FormFieldRegistry
      *
      * @param string $name The fully qualified name of the field
      *
-     * @return bool    Whether the form has the given field
+     * @return bool Whether the form has the given field
      */
     public function has($name)
     {
@@ -115,15 +115,15 @@ class FormFieldRegistry
     /**
      * Set the value of a field and its children.
      *
-     * @param string $name The fully qualified name of the field
-     * @param mixed $value The value
+     * @param string $name  The fully qualified name of the field
+     * @param mixed  $value The value
      *
      * @throws \InvalidArgumentException when the name is malformed
      * @throws \InvalidArgumentException if the field does not exist
      */
     public function set($name, $value)
     {
-        $target = &$this->get($name);
+        $target = & $this->get($name);
         if (!is_array($value) || $target instanceof Field\ChoiceFormField) {
             $target->setValue($value);
         } else {
@@ -150,8 +150,8 @@ class FormFieldRegistry
      * This function is made private because it allows overriding the $base and
      * the $values properties without any type checking.
      *
-     * @param string $base The fully qualified name of the base field
-     * @param array $values The values of the fields
+     * @param string $base   The fully qualified name of the base field
+     * @param array  $values The values of the fields
      *
      * @return FormFieldRegistry
      */
@@ -167,9 +167,9 @@ class FormFieldRegistry
     /**
      * Transforms a PHP array in a list of fully qualified name / value.
      *
-     * @param array $array The PHP array
-     * @param string $base The name of the base field
-     * @param array $output The initial values
+     * @param array  $array  The PHP array
+     * @param string $base   The name of the base field
+     * @param array  $output The initial values
      *
      * @return array The list of fields as array((string) Fully qualified name => (mixed) value)
      */

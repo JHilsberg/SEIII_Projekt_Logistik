@@ -25,59 +25,62 @@ class FormController  extends BaseController
     public function validateSubmit()
     {
 
-        date_default_timezone_set('Europe/Berlin');
 
-        //see what timezone the server is currently in via:
-        //$timezone = date_default_timezone_get();
-        //echo "The current server timezone is: " . $timezone;
-
-
-        $yesterday = date('m/d/Y', time() - 86400);
-        $abholtermin = date('m/d/Y', strtotime(Input::get('abholtermin')) - 86400);
-        $minLiefertermin = date('m/d/Y', strtotime(Input::get('minLiefertermin')) - 86400);
+        //$abholtermin= $_POST["abholtermin"];
+        //$minLiefertermin= $_POST["minLiefertermin"];
+        //$checkboxVerkehrsmittel= !is_null(Input::get('schiff')) || !is_null(Input::get('lkw')) || !is_null(Input::get('zug')) ||
+        //   !is_null(Input::get('pkw')) || !is_null(Input::get('flugzeug')) || !is_null(Input::get('egal'));
 
         // validate the info, create rules for the inputs
         $rules = array(
 
 
-            'lp_name' => 'required|alpha_spaces_simple|between:0,32',
-            'lp_street' => 'required|alpha_spaces_simple|between:0,64',
-            'lp_number' => 'required|alpha_num|between:0,5',
+            'lp_name' => 'required|alpha_dash',
+            'lp_street' => 'required|alpha_dash',
+            'lp_number' => 'required|alpha_num',
             'lp_plz' => 'required|numeric|digits:5',
-            'lp_city' => 'required|alpha_spaces_simple|between:0,64',
+            'lp_city' => 'required|alpha_dash',
 
-            'dp_name' => 'required|alpha_spaces_simple|between:0,32',
-            'dp_street' => 'required|alpha_spaces_simple|between:0,64',
-            'dp_number' => 'required|alpha_num|between:0,5',
+            'dp_name' => 'required|alpha_dash',
+            'dp_street' => 'required|alpha_dash',
+            'dp_number' => 'required|alpha_num',
             'dp_plz' => 'required|numeric|digits:5',
-            'dp_city' => 'required|alpha_spaces_simple|between:0,64',
+            'dp_city' => 'required|alpha_dash',
 
 
-            'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
-            'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
-            'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
+            // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
+            // 'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
+            // 'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
 
-            'anzahlBehaelter' => 'required|numeric|min:1|digits_between:0,11',
-            'beschreibung' => 'required|alpha_spaces|between:0,250',
-            'gewicht' => 'required|numeric|min:1|digits_between:0,20',
-            'verpackung' => 'alpha_spaces|between:0,250',
-            'bemerkung' => 'alpha_spaces|between:0,250',
-            'transportmittel' => 'required'
+            // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
+
+            /**'behaelter' => $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen',*/
+
+
+            'anzahlBehaelter' => 'required|numeric|min:1',
+
+            'beschreibung' => 'required|alpha_dash|digits_between:0,250',
+
+            'gewicht' => 'required|numeric|min:1',
+
+            /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
+
+            'verpackung' => 'alpha_dash|digits_between:0,250',
+
+            'bemerkung' => 'alpha_dash|digits_between:0,250'
+
 
         );
-        //Sonderzeichen für Beschreibung, Verpackung und Bemerkung
-        Validator::extend('alpha_spaces', function($attribute, $value)
-        {
-            return preg_match('/^[\pL\s\w-+&?%@€:()_.,0-9]+$/u', $value);
-        });
-        //Sonderzeichen für Verlade- und Zielort
-        Validator::extend('alpha_spaces_simple', function($attribute, $value)
-        {
-            return preg_match('/^[\pL\s-()_.,]+$/u', $value);
-        });
+
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
+        /** $validator -> sometimes('abholtermin', 'liegtInVergangenheit', function()
+         * {
+         * $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
+         * $abholtermin= Input::get('abholtermin');
+         * return   $abholtermin = !before:$currentDate->format('mm/dd/yyyy');
+         * });*/
 
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {
@@ -114,18 +117,19 @@ class FormController  extends BaseController
         $order->warengewicht = Input::get('gewicht');
         $order->bemerkung = Input::get('bemerkung');
 
-        $transportmittel =  Input::get('transportmittel', array());
-        if(in_array('schiff', $transportmittel))
+        //transportmittel:
+
+        if (Input::has('schiff'))
             $order->schiff = 1;
-        if(in_array('lkw', $transportmittel))
+        if (Input::has('lkw'))
             $order->lkw = 1;
-        if(in_array('zug', $transportmittel))
+        if (Input::has('zug'))
             $order->zug = 1;
-        if(in_array('pkw', $transportmittel))
+        if (Input::has('pkw'))
             $order->pkw = 1;
-        if(in_array('flugzeug', $transportmittel))
+        if (Input::has('flugzeug'))
             $order->flugzeug = 1;
-        if(in_array('egal', $transportmittel))
+        if (Input::has('egal'))
             $order->egal = 1;
 
         //userid
@@ -161,65 +165,64 @@ class FormController  extends BaseController
 
         $order->save();
 
-        return Redirect::to('secure')
-            ->with('saved', 'saved');
+        echo SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
+
+        return;
+        /*return Redirect::to('secure')
+            ->with('saved', 'saved');*/
     }
 
     public function validateSave()
     {
-        date_default_timezone_set('Europe/Berlin');
-
-        //see what timezone the server is currently in via:
-        //$timezone = date_default_timezone_get();
-        //echo "The current server timezone is: " . $timezone;
-
-
-        $yesterday = date('m/d/Y', time() - 86400);
-        $abholtermin= date('m/d/Y', strtotime(Input::get('abholtermin')) - 86400);
-        $minLiefertermin= date('m/d/Y', strtotime(Input::get('minLiefertermin')) - 86400);
-
         $rules = array(
 
-            'lp_name' => 'required|alpha_spaces_simple|between:0,32',
-            'lp_street' => 'required|alpha_spaces_simple|between:0,64',
-            'lp_number' => 'required|alpha_num|between:0,5',
-            'lp_plz' => 'required|numeric|digits:5',
-            'lp_city' => 'required|alpha_spaces_simple|between:0,64',
 
-            'dp_name' => 'required|alpha_spaces_simple|between:0,32',
-            'dp_street' => 'required|alpha_spaces_simple|between:0,64',
-            'dp_number' => 'required|alpha_num|between:0,5',
-            'dp_plz' => 'required|numeric|digits:5',
-            'dp_city' => 'required|alpha_spaces_simple|between:0,64',
+            'lp_name' => 'alpha_dash',
+            'lp_street' => 'alpha_dash',
+            'lp_number' => 'alpha_num',
+            'lp_plz' => 'numeric|digits:5',
+            'lp_city' => 'alpha_dash',
+
+            'dp_name' => 'alpha_dash',
+            'dp_street' => 'alpha_dash',
+            'dp_number' => 'alpha_num',
+            'dp_plz' => 'numeric|digits:5',
+            'dp_city' => 'alpha_dash',
 
 
-            'abholtermin' => 'required|date_format:m/d/Y|after:'.$yesterday,
-            'minLiefertermin' => 'required|date_format:m/d/Y|after:'.$abholtermin,
-            'maxLiefertermin' => 'required|date_format:m/d/Y|after:'.$minLiefertermin,
+            // 'abholtermin' => 'required|date_format:mm/dd/yyyy|liegtInVergangenheit',
+            // 'minLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$abholtermin,
+            // 'maxLiefertermin' => 'required|date_format:mm/dd/yyyy'|!'before:'.$minLiefertermin,
 
-            'anzahlBehaelter' => 'required|numeric|min:1|digits_between:0,11',
-            'beschreibung' => 'required|alpha_spaces|between:0,250',
-            'gewicht' => 'required|numeric|min:1|digits_between:0,20',
-            'verpackung' => 'alpha_spaces|between:0,250',
-            'bemerkung' => 'alpha_spaces|between:0,250',
-            'transportmittel' => 'required'
+            // 'Verkehrsmittel' => $checkboxVerkehrsmittel == 0,
 
+            /**'behaelter' => $_POST["behaelter"] == 'Container' || $_POST["behaelter"] == 'Palette' || $_POST["behaelter"] == 'Boxen',*/
+
+
+            'anzahlBehaelter' => 'numeric|min:1',
+
+            'beschreibung' => 'alpha_dash|digits_between:0,250',
+
+            'gewicht' => 'numeric|min:1',
+
+            /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
+
+            'verpackung' => 'alpha_dash|digits_between:0,250',
+
+            'bemerkung' => 'alpha_dash|digits_between:0,250'
 
 
         );
-        //Sonderzeichen für Beschreibung, Verpackung und Bemerkung
-        Validator::extend('alpha_spaces', function($attribute, $value)
-        {
-            return preg_match('/^[\pL\s\w-+&?%@€:()_.,0-9]+$/u', $value);
-        });
-        //Sonderzeichen für Verlade- und Zielort
-        Validator::extend('alpha_spaces_simple', function($attribute, $value)
-        {
-            return preg_match('/^[\pL\s-()_.,]+$/u', $value);
-        });
+
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
 
+        /** $validator -> sometimes('abholtermin', 'liegtInVergangenheit', function()
+         * {
+         * $currentDate= new DateTime(null, new DateTimeZone('Europe/Berlin'));
+         * $abholtermin= Input::get('abholtermin');
+         * return   $abholtermin = !before:$currentDate->format('mm/dd/yyyy');
+         * });*/
 
         // if the validator fails, redirect back to the form
         if ($validator->fails()) {
@@ -255,18 +258,19 @@ class FormController  extends BaseController
         $order->warengewicht = Input::get('gewicht');
         $order->bemerkung = Input::get('bemerkung');
 
-        $transportmittel =  Input::get('transportmittel', array());
-        if(in_array('schiff', $transportmittel))
+        //transportmittel:
+
+        if (Input::has('schiff'))
             $order->schiff = 1;
-        if(in_array('lkw', $transportmittel))
+        if (Input::has('lkw'))
             $order->lkw = 1;
-        if(in_array('zug', $transportmittel))
+        if (Input::has('zug'))
             $order->zug = 1;
-        if(in_array('pkw', $transportmittel))
+        if (Input::has('pkw'))
             $order->pkw = 1;
-        if(in_array('flugzeug', $transportmittel))
+        if (Input::has('flugzeug'))
             $order->flugzeug = 1;
-        if(in_array('egal', $transportmittel))
+        if (Input::has('egal'))
             $order->egal = 1;
 
         //userid

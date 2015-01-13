@@ -90,8 +90,8 @@ class FlashBagTest extends \PHPUnit_Framework_TestCase
         $this->bag->set('notice', 'Foo');
         $this->bag->set('error', 'Bar');
         $this->assertEquals(array(
-                'notice' => array('Foo'),
-                'error' => array('Bar'),), $this->bag->all()
+            'notice' => array('Foo'),
+            'error' => array('Bar'), ), $this->bag->all()
         );
 
         $this->assertEquals(array(), $this->bag->all());
@@ -120,15 +120,15 @@ class FlashBagTest extends \PHPUnit_Framework_TestCase
         $this->bag->set('notice', 'Foo');
         $this->bag->set('error', 'Bar');
         $this->assertEquals(array(
-                'notice' => array('Foo'),
-                'error' => array('Bar'),
+            'notice' => array('Foo'),
+            'error' => array('Bar'),
             ), $this->bag->peekAll()
         );
         $this->assertTrue($this->bag->has('notice'));
         $this->assertTrue($this->bag->has('error'));
         $this->assertEquals(array(
-                'notice' => array('Foo'),
-                'error' => array('Bar'),
+            'notice' => array('Foo'),
+            'error' => array('Bar'),
             ), $this->bag->peekAll()
         );
     }

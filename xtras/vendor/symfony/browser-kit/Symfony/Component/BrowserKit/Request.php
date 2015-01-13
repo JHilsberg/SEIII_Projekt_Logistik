@@ -31,13 +31,13 @@ class Request
     /**
      * Constructor.
      *
-     * @param string $uri The request URI
-     * @param string $method The HTTP method request
-     * @param array $parameters The request parameters
-     * @param array $files An array of uploaded files
-     * @param array $cookies An array of cookies
-     * @param array $server An array of server parameters
-     * @param string $content The raw body data
+     * @param string $uri        The request URI
+     * @param string $method     The HTTP method request
+     * @param array  $parameters The request parameters
+     * @param array  $files      An array of uploaded files
+     * @param array  $cookies    An array of cookies
+     * @param array  $server     An array of server parameters
+     * @param string $content    The raw body data
      *
      * @api
      */

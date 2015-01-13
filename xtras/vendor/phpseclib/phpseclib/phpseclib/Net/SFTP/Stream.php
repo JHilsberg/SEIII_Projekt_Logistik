@@ -221,8 +221,8 @@ class Net_SFTP_Stream
             }
 
             // casting $pass to a string is necessary in the event that it's a Crypt_RSA object
-            if (isset(self::$instances[$host][$port][$user][(string)$pass])) {
-                $this->sftp = self::$instances[$host][$port][$user][(string)$pass];
+            if (isset(self::$instances[$host][$port][$user][(string) $pass])) {
+                $this->sftp = self::$instances[$host][$port][$user][(string) $pass];
             } else {
                 $this->sftp = new Net_SFTP($host, $port);
                 $this->sftp->disableStatCache();
@@ -248,7 +248,7 @@ class Net_SFTP_Stream
                         return false;
                     }
                 }
-                self::$instances[$host][$port][$user][(string)$pass] = $this->sftp;
+                self::$instances[$host][$port][$user][(string) $pass] = $this->sftp;
             }
         }
 
@@ -334,7 +334,7 @@ class Net_SFTP_Stream
             $this->eof = true;
             return false;
         }
-        $this->pos += strlen($result);
+        $this->pos+= strlen($result);
 
         return $result;
     }
@@ -366,7 +366,7 @@ class Net_SFTP_Stream
         if ($result === false) {
             return false;
         }
-        $this->pos += strlen($data);
+        $this->pos+= strlen($data);
         if ($this->pos > $this->size) {
             $this->size = $this->pos;
         }
@@ -420,10 +420,10 @@ class Net_SFTP_Stream
                 }
                 break;
             case SEEK_CUR:
-                $offset += $this->pos;
+                $offset+= $this->pos;
                 break;
             case SEEK_END:
-                $offset += $this->size;
+                $offset+= $this->size;
         }
 
         $this->pos = $offset;
