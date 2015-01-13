@@ -100,7 +100,7 @@
                 {{ Form::close() }}
             </td>
             <td>
-                {{ Form::open(array('action' => 'PDFController@start', 'target' => '_blank',))}}
+                {{ Form::open(['action' => 'PDFController@start', 'target' => '_blank'])}}
                 {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'show')) }}
                 {{ Form::close() }}
             </td>

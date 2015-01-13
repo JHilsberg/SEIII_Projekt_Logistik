@@ -59,15 +59,15 @@ class FormController  extends BaseController
 
             'anzahlBehaelter' => 'required|numeric|min:1',
 
-            'beschreibung' => 'required|alpha_dash|digits_between:0,250',
+            'beschreibung' => 'required|alpha_dash',
 
             'gewicht' => 'required|numeric|min:1',
 
             /**'einheit' => $_POST["einheit"] == 'Kilogramm' || $_POST["einheit"] == 'Tonnen',*/
 
-            'verpackung' => 'alpha_dash|digits_between:0,250',
+            'verpackung' => 'alpha_dash',
 
-            'bemerkung' => 'alpha_dash|digits_between:0,250'
+            'bemerkung' => 'alpha_dash'
 
 
         );
@@ -201,7 +201,7 @@ class FormController  extends BaseController
 
             'anzahlBehaelter' => 'numeric|min:1',
 
-            'beschreibung' => 'alpha_dash|digits_between:0,250',
+            'beschreibung' => 'alpha_dash',
 
             'gewicht' => 'numeric|min:1',
 
