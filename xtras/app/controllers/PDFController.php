@@ -18,7 +18,7 @@ class PDFController extends BaseController
 
     public function savePDF()
     {
-        $file = public_path() . "/pdf/file.pdf";
+        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.'toDo'.DIRECTORY_SEPARATOR."file.pdf";
         if (file_exists($file)) {
             $headers = array('content-type' => 'application/pdf');
             return Response::download($file, 'filename.pdf', $headers);
@@ -27,7 +27,7 @@ class PDFController extends BaseController
 
     public function showPDF()
     {
-        $file = public_path() . "/pdf/file.pdf";
+        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.'toDo'.DIRECTORY_SEPARATOR."file.pdf";
         if (file_exists($file)) {
             $headers = array('content-type' => 'application/pdf');
             $content = file_get_contents($file);

@@ -476,13 +476,9 @@ class FormController  extends BaseController
         $order->abgespeichert = \Carbon\Carbon::now();
 
         $order->save();
-
-        $xml=SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
-
-
-        return (new Response($xml, '200'))
-            ->header('Content-Type', 'text/xml');
-
+        File::makeDirectory(public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.$order->id, 0775, true, true);
+        echo SubmitController::get_order_as_xml($order, $abholadresse, $lieferadresse);
+        return;
         /*return Redirect::to('secure')
         ->with('saved', 'saved');*/
     }
@@ -625,7 +621,7 @@ class FormController  extends BaseController
         $order->abgespeichert = \Carbon\Carbon::now();
 
         $order->save();
-
+        File::makeDirectory(public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.$order->id, 0775, true, true);
         return Redirect::to('secure')
             ->with('saved', 'saved');
     }

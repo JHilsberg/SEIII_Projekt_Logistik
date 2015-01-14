@@ -40,7 +40,7 @@ class SessionController extends BaseController{
 
             // attempt to do the login
             if (Auth::attempt($userdata)) {
-
+                File::makeDirectory(public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email, 0775, true, true);
                 //return View::make('secure');
                 return Redirect::to('secure');
 

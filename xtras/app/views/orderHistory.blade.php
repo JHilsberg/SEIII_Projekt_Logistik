@@ -118,7 +118,8 @@
             <td>{{$order->warenbeschreibung}}</td>
             <td>{{date("d.m.y H:i", strtotime($order->abgespeichert))}}</td>
 
-            @if(($order->abgesendet!='0000-00-00 00:00:00' && !(File::exists(public_path().'/pdf//'.Auth::user()->email.'//'.$order->id.'/file.pdf'))))<!--Server URL setzen-->
+
+            @if(($order->abgesendet!='0000-00-00 00:00:00' && !(File::exists(public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.$order->id.DIRECTORY_SEPARATOR.'file.pdf'))))<!--Server URL setzen-->
             <td>{{Lang::get('orderhistory.procress')}}</td>
                 <td>
                     {{ Form::open(['route' => ['editOrder', $order->id]]) }}
@@ -131,7 +132,7 @@
                 <td>
 
                 </td>
-            @elseif(($order->abgesendet!='0000-00-00 00:00:00' && (File::exists(public_path().'/pdf//'.Auth::user()->email.'//'.$order->id.'/file.pdf'))))<!--Server URL setzen-->
+            @elseif(($order->abgesendet!='0000-00-00 00:00:00' && (File::exists(public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.$order->id.DIRECTORY_SEPARATOR.'file.pdf'))))<!--Server URL setzen-->
                 <td>{{Lang::get('orderhistory.done')}}</td>
                 <td>
                      {{ Form::open(['route' => ['editOrder', $order->id]]) }}
