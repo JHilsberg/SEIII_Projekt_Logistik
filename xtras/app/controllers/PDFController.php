@@ -8,26 +8,26 @@
  */
 class PDFController extends BaseController
 {
-    public function start()
+    public function start($orderid)
     {
 
-        $action = Input::get('action');
-        return $this->$action();
+       if(Input::has('showPDF'))return $this->showPDF($orderid);
+       elseif (Input::has('savePDF'))return $this->savePDF($orderid);
 
     }
 
-    public function savePDF()
+    public function savePDF($orderid)
     {
-        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.'toDo'.DIRECTORY_SEPARATOR."file.pdf";
+        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.$orderid.DIRECTORY_SEPARATOR."file.pdf";
         if (file_exists($file)) {
             $headers = array('content-type' => 'application/pdf');
-            return Response::download($file, 'filename.pdf', $headers);
+            return Response::download($file, 'order_'.$orderid.'.pdf', $headers);
         }
     }
 
-    public function showPDF()
+    public function showPDF($orderid)
     {
-        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.'toDo'.DIRECTORY_SEPARATOR."file.pdf";
+        $file = public_path().DIRECTORY_SEPARATOR.'pdf'.DIRECTORY_SEPARATOR.Auth::user()->email.DIRECTORY_SEPARATOR.$orderid.DIRECTORY_SEPARATOR."file.pdf";
         if (file_exists($file)) {
             $headers = array('content-type' => 'application/pdf');
             $content = file_get_contents($file);

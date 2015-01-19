@@ -53,7 +53,9 @@ Route::group(array('prefix' => LaravelLocalization::setLocale()), function()
          //->with('order', $order);
     }));
 
-    Route::post('submitEditOrder/{id}',array('before' => 'auth','uses'=>'FormController@editSubmitted','as' => 'submitEditOrder', function($id) {
+    Route::post('handlePDF/{id}',array('before' => 'auth', 'uses' => 'PDFController@start', 'as' => 'handlePDF', function($id){}));
+
+    Route::post('submitEditOrder/{id}',array('before' => 'auth', 'uses'=>'FormController@editSubmitted', 'as' => 'submitEditOrder', function($id) {
 
         //  $order=Order::find($id);
 
@@ -70,4 +72,5 @@ Route::post('account', array('uses' => 'accountViewController@validate'));
 
 Route::post('transportauftrag', array('uses' => 'FormController@start'));
 
-Route::post('handlePDF',array('uses' => 'PDFController@start'));
+//Route::post('handlePDF',array('uses' => 'PDFController@start'));
+

@@ -140,13 +140,13 @@
                     {{ Form::close() }}
                 </td>
                 <td>
-                    {{ Form::open(['action' => 'PDFController@start']) }}
-                    {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'show')) }}
+                    {{ Form::open(['action' => ['PDFController@start', $order->id],'class'=>'form-horizontal','role'=>'form','method'=>'POST']) }}
+                    {{ Form::submit(Lang::get('orderhistory.show'), array('class' => 'btn btn-primary btn-block', 'name' => 'showPDF')) }}
                     {{ Form::close() }}
                 </td>
                 <td>
-                    {{ Form::open(['action' => 'PDFController@start']) }}
-                    {{ Form::submit(Lang::get('orderhistory.save'), array('class' => 'btn btn-primary btn-block', 'name' => 'save')) }}
+                    {{ Form::open(['action' => ['PDFController@start', $order->id],'class'=>'form-horizontal','role'=>'form','method'=>'POST']) }}
+                    {{ Form::submit(Lang::get('orderhistory.save'), array('class' => 'btn btn-primary btn-block', 'name' => 'savePDF')) }}
                     {{ Form::close() }}
 
                 </td>
